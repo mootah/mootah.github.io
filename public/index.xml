@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>saibox</title>
+      <link>https://mootah.github.com</link>
+      <description>Last 10 notes on saibox</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>QuartzでのみUIDを使う</title>
+    <link>https://mootah.github.com/1E5Iwb</link>
+    <guid>https://mootah.github.com/1E5Iwb</guid>
+    <description>QuartzでのみUIDを使う 問題点 Obsidianでファイル名をUIDにするとwikiリンクの恩恵を受けにくくなる 具体的には、 01.md# hoge [[fuga]] というファイルがあって 02.md# fuga というファイルをあとから作ったときに 01.md# hoge [[02|fuga]] と、勝手に更新してくれない 解決策 そこで、Obsidian内ではあくまでH1をファイル名として扱い、 Quartz側の実行スクリプトでUIDに置換する、ということをやる まず、frontmatterを以下のようにする frontmatteruid: &quot;&lt;Template...</description>
+    <pubDate>Sun, 04 May 2025 12:10:00 GMT</pubDate>
+  </item><item>
+    <title>Obsidianのファイル名にUIDを使う</title>
+    <link>https://mootah.github.com/1E5q66</link>
+    <guid>https://mootah.github.com/1E5q66</guid>
+    <description>Obsidianのファイル名にUIDを使う Warning この方法はやめました。QuartzでのみUIDを使うを参照 Quartzで公開することを考えるとページのURLにマルチバイト文字がごちゃついてるのは避けたい なのでファイル名としてはUniqueなIDを振る Zettelkasten的にも推奨されてるっぽい wikiリンクやサイドバーに謎の文字列を表示したくはないのでプラグインでなんとかする TemplaterでUIDを振る Unixタイムスタンプを64進数表示してUIDとしてファイル名にする const digit=&quot;0123456789abcdefghijklmnopqr...</description>
+    <pubDate>Sun, 04 May 2025 12:02:00 GMT</pubDate>
+  </item><item>
+    <title>Quartzでローカルフォントを使う</title>
+    <link>https://mootah.github.com/1E5Izk</link>
+    <guid>https://mootah.github.com/1E5Izk</guid>
+    <description>Quartzでローカルフォントを使う かえでさんの記事を参考にした Config quartz.config.tsconst config: QuartzConfig = { configuration: { ..</description>
+    <pubDate>Sun, 04 May 2025 08:02:13 GMT</pubDate>
+  </item><item>
+    <title>Quartzのセットアップ</title>
+    <link>https://mootah.github.com/1E4Dcm</link>
+    <guid>https://mootah.github.com/1E4Dcm</guid>
+    <description>Quartzのセットアップ Obsidian用の静的サイトジェネレータ Welcome to Quartz 4を読んでやってく 手元のnodeがv12とかだったので最新版をインストールする Nodeをインストールする Quartz 公式通りだとcloneしてorigin変えるみたいな感じっぽかった forkしてObsidian Vaultをsubmoduleにすれば良さそう.</description>
+    <pubDate>Sun, 04 May 2025 08:02:04 GMT</pubDate>
+  </item><item>
+    <title>Home</title>
+    <link>https://mootah.github.com/</link>
+    <guid>https://mootah.github.com/</guid>
+    <description>Home Hello world.</description>
+    <pubDate>Sun, 04 May 2025 07:53:00 GMT</pubDate>
+  </item><item>
+    <title>Obsidianのセットアップ</title>
+    <link>https://mootah.github.com/1E4vtE</link>
+    <guid>https://mootah.github.com/1E4vtE</guid>
+    <description>Obsidianのセットアップ 全体像 Obsidianの設定メモ タイトル周り Obsidianのファイル名にUIDを使う Quartzのセットアップ 次はQuartzのセットアップ.</description>
+    <pubDate>Sun, 04 May 2025 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Obsidianの設定メモ</title>
+    <link>https://mootah.github.com/1E5q2q</link>
+    <guid>https://mootah.github.com/1E5q2q</guid>
+    <description>Obsidianの設定メモ どこになにを設定したか忘れるので一覧 後にSettings Searchいれて迷う必要なくなった General 特になし Editor Properties in document → Hidden 上の方がごちゃつくのやなので非表示 プラグインでサイドバーに表示する（後述） Indent using tabs → Off インデントはスペースで Vim key bindings → On vimmerです Files and links Automatically update internal links → On タイトル変更時にバックリンクを自動置換 De...</description>
+    <pubDate>Sun, 04 May 2025 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>WSLでxdg-openしたい</title>
+    <link>https://mootah.github.com/1E5fF9</link>
+    <guid>https://mootah.github.com/1E5fF9</guid>
+    <description>WSLでxdg-openしたい wsl-openというのがある zshbun install -g wsl-open シムリンクを張る zshln -s $(which wsl-open) $HOME/.local/bin/xdg-open.</description>
+    <pubDate>Sat, 03 May 2025 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>非分割エルゴキーボードを作りたい</title>
+    <link>https://mootah.github.com/1E5kRj</link>
+    <guid>https://mootah.github.com/1E5kRj</guid>
+    <description>非分割エルゴキーボードを作りたい 分割キーボードは充電やら持ち運んでセッティングやらがだるい 非分割を探すとBluetoothが使えてGateron LPなやつがありそうでない なんならChoc v2ですらない 要件 形状: 42keys column staggered splay unibody MCU: Xiao BLE キースイッチ: Gateron LP 類似のキーボード PJE66/hummingbird Xiao BLE, Choc v1, 30keys lpgalaxy/revxlp Xiao BLE, Choc v1, 42keys kapee1/osprey-remix n...</description>
+    <pubDate>Sat, 03 May 2025 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>ZMKを読む（導入編）</title>
+    <link>https://mootah.github.com/1E5cv5</link>
+    <guid>https://mootah.github.com/1E5cv5</guid>
+    <description>ZMKを読む（導入編） ZMKのドキュメントを読んでいく ZMKとは Zephyrベースのキーボードファームウェア MITライセンスのオープンソースプロジェクト ワイヤレスファーストを謳っている 用語 Board (ボード) MCUボード単体またはMCUを含むコントローラコンポーネント オンボードコントローラの場合はPCB全体を指す Shield (シールド) ボードと組み合わせることで最終的なキーボードとなるようなシェルコンポーネント ボードフットプリント、スイッチフットプリントを持つPCBのこと Interconnect (インターコネクト) シールドにあるボードを搭載するフットプリントの...</description>
+    <pubDate>Fri, 02 May 2025 00:00:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

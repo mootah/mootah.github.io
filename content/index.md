@@ -1,6 +1,11 @@
 ---
-title: Welcome to Quartz
+aliases: null
+created: 2025-05-01
+modified: 2025-05-04T16:53
+tags: null
+title: Home
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+# Home
+
+Hello world.
