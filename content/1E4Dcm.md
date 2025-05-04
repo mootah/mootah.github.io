@@ -6,6 +6,7 @@ modified: 2025-05-04 17:02:04
 tags:
 - Quartz
 - 環境構築
+- Obsidian
 title: Quartzのセットアップ
 uid: 1E4Dcm
 ---
@@ -23,3 +24,5 @@ uid: 1E4Dcm
 
 公式通りだとcloneしてorigin変えるみたいな感じっぽかった
 forkしてObsidian Vaultをsubmoduleにすれば良さそう
+
+[[1E5Iwb|QuartzでのみUIDを使う]]

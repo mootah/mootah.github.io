@@ -8,4 +8,10 @@ title: Home
 
 # Home
 
-Hello world.
+[[1E4vtE|Obsidian]]はじめました
+
+ページが増えたらMOC的なの作ります
+
+メモはこれまでKeep + Scrapboxで運用していましたが
+Keepは日常の些事専用、Scrapboxはリンク集と化してしまっているので
+元々Scrapboxが担っていた情報の保存をObsidianに担当させようと思います

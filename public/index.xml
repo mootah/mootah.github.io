@@ -9,13 +9,13 @@
     <title>QuartzでのみUIDを使う</title>
     <link>https://mootah.github.com/1E5Iwb</link>
     <guid>https://mootah.github.com/1E5Iwb</guid>
-    <description>QuartzでのみUIDを使う 問題点 Obsidianでファイル名をUIDにするとwikiリンクの恩恵を受けにくくなる 具体的には、 01.md# hoge [[fuga]] というファイルがあって 02.md# fuga というファイルをあとから作ったときに 01.md# hoge [[02|fuga]] と、勝手に更新してくれない 解決策 そこで、Obsidian内ではあくまでH1をファイル名として扱い、 Quartz側の実行スクリプトでUIDに置換する、ということをやる まず、frontmatterを以下のようにする frontmatteruid: &quot;&lt;Template...</description>
+    <description>QuartzでのみUIDを使う 問題点 Obsidianでファイル名をUIDにするとwikiリンクの恩恵を受けにくくなる 具体的には、 01.md# hoge [[fuga]] というファイルがあって 02.md# fuga というファイルをあとから作ったときに 01.md# hoge [[02|fuga]] と、自動的に更新してくれない 解決策 そこで、Obsidian内ではあくまでH1をファイル名として扱い、 Quartz側の実行スクリプトでUIDに置換する、ということをやる まず、frontmatterを以下のようにする frontmatteruid: &quot;&lt;Templat...</description>
     <pubDate>Sun, 04 May 2025 12:10:00 GMT</pubDate>
   </item><item>
     <title>Obsidianのファイル名にUIDを使う</title>
     <link>https://mootah.github.com/1E5q66</link>
     <guid>https://mootah.github.com/1E5q66</guid>
-    <description>Obsidianのファイル名にUIDを使う Warning この方法はやめました。QuartzでのみUIDを使うを参照 Quartzで公開することを考えるとページのURLにマルチバイト文字がごちゃついてるのは避けたい なのでファイル名としてはUniqueなIDを振る Zettelkasten的にも推奨されてるっぽい wikiリンクやサイドバーに謎の文字列を表示したくはないのでプラグインでなんとかする TemplaterでUIDを振る Unixタイムスタンプを64進数表示してUIDとしてファイル名にする const digit=&quot;0123456789abcdefghijklmnopqr...</description>
+    <description>Obsidianのファイル名にUIDを使う Warning この方法はやめました。QuartzでのみUIDを使うを参照 Quartzで公開することを考えるとページのURLにマルチバイト文字がごちゃついてるのは避けたい なのでファイル名としてはUniqueなIDを振る Zettelkasten的にも推奨されてるっぽい wikiリンクやサイドバーに謎の文字列を表示したくないのでプラグインでなんとかする TemplaterでUIDを振る Unixタイムスタンプを64進数表示してUIDとしてファイル名にする const digit = &quot;0123456789abcdefghijklmnopq...</description>
     <pubDate>Sun, 04 May 2025 12:02:00 GMT</pubDate>
   </item><item>
     <title>Quartzでローカルフォントを使う</title>
@@ -27,13 +27,13 @@
     <title>Quartzのセットアップ</title>
     <link>https://mootah.github.com/1E4Dcm</link>
     <guid>https://mootah.github.com/1E4Dcm</guid>
-    <description>Quartzのセットアップ Obsidian用の静的サイトジェネレータ Welcome to Quartz 4を読んでやってく 手元のnodeがv12とかだったので最新版をインストールする Nodeをインストールする Quartz 公式通りだとcloneしてorigin変えるみたいな感じっぽかった forkしてObsidian Vaultをsubmoduleにすれば良さそう.</description>
+    <description>Quartzのセットアップ Obsidian用の静的サイトジェネレータ Welcome to Quartz 4を読んでやってく 手元のnodeがv12とかだったので最新版をインストールする Nodeをインストールする Quartz 公式通りだとcloneしてorigin変えるみたいな感じっぽかった forkしてObsidian Vaultをsubmoduleにすれば良さそう QuartzでのみUIDを使う.</description>
     <pubDate>Sun, 04 May 2025 08:02:04 GMT</pubDate>
   </item><item>
     <title>Home</title>
     <link>https://mootah.github.com/</link>
     <guid>https://mootah.github.com/</guid>
-    <description>Home Hello world.</description>
+    <description>Home Obsidianはじめました ページが増えたらMOC的なの作ります メモはこれまでKeep + Scrapboxで運用していましたが Keepは日常の些事専用、Scrapboxはリンク集と化してしまっているので 元々Scrapboxが担っていた情報の保存をObsidianに担当させようと思います.</description>
     <pubDate>Sun, 04 May 2025 07:53:00 GMT</pubDate>
   </item><item>
     <title>Obsidianのセットアップ</title>

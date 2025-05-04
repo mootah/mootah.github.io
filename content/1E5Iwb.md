@@ -4,6 +4,7 @@ created: 2025-05-04
 modified: 2025-05-04T21:10
 tags:
 - Quartz
+- Obsidian
 title: QuartzでのみUIDを使う
 uid: 1E5Iwb
 ---
@@ -34,7 +35,7 @@ uid: 1E5Iwb
 [[02|fuga]]
 ```
 
-と、勝手に更新してくれない
+と、自動的に更新してくれない
 
 ## 解決策
 

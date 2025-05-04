@@ -136,7 +136,7 @@ export default {
       title: "Table of Contents",
     },
     contentMeta: {
-      readingTime: ({ minutes }) => `${minutes} min read`,
+      readingTime: ({ minutes }) => `所要: ${minutes}分`,
     },
   },
   pages: {
