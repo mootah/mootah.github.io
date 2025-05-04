@@ -1,3 +1,92 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+:root[saved-theme=dark] {
+    --secondary: #ac93f7;
+}
+
+@font-face {
+    font-family: "LINE Seed JP";
+    src: url("/static/fonts/LINESeedJP_OTF_Rg.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "LINE Seed JP";
+    src: url("/static/fonts/LINESeedJP_OTF_Bd.woff2") format("woff2");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Juisee";
+    src: url("/static/fonts/Juisee-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Juisee";
+    src: url("/static/fonts/Juisee-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+.page-title > a {
+    color: var(--dark);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.internal {
+    background-color: transparent;
+}
+
+a.internal.tag-link {
+    background-color: transparent;
+}
+
+a.external {
+    font-weight: inherit;
+}
+
+.page>#quartz-body .page-header {
+    margin-bottom: 1.9rem;
+}
+
+.page article>h1 {
+    display: none;
+}
+
+figure[data-rehype-pretty-code-figure]>[data-rehype-pretty-code-title] {
+    width: auto;
+    margin-bottom: 0;
+    padding: .3rem 1rem;
+    border-radius: 5px 5px 0 0;
+    border-bottom: none;
+}
+
+figure[data-rehype-pretty-code-figure]>[data-rehype-pretty-code-title] + pre{
+    margin-top: 0;
+    border-radius: 0 0 5px 5px;
+}
+
+.recent-notes {
+    flex-direction: column;
+    flex: 0 auto;
+    min-height: 1.2rem;
+    display: flex;
+    overflow-y: hidden;
+}
+
+.recent-notes>ul.recent-ul {
+    overflow-y: scroll;
+}

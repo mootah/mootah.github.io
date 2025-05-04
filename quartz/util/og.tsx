@@ -10,6 +10,7 @@ import { formatDate, getDate } from "../components/Date"
 import readingTime from "reading-time"
 import { i18n } from "../i18n"
 import chalk from "chalk"
+import { getLocalFontData } from "./font"
 
 const defaultHeaderWeight = [700]
 const defaultBodyWeight = [400]
@@ -75,6 +76,12 @@ export async function fetchTtf(
   rawFontName: string,
   weight: FontWeight,
 ): Promise<Buffer<ArrayBufferLike> | undefined> {
+
+  const localFontData = await getLocalFontData(rawFontName, weight)
+  if (localFontData) {
+    return localFontData;
+  }
+
   const fontName = rawFontName.replaceAll(" ", "+")
   const cacheKey = `${fontName}-${weight}`
   const cacheDir = path.join(QUARTZ, ".quartz-cache", "fonts")

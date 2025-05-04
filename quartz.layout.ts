@@ -1,3 +1,4 @@
+import { Options } from "./quartz/components/Explorer"
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
@@ -12,6 +13,16 @@ export const sharedPageComponents: SharedLayout = {
       "Discord Community": "https://discord.gg/cRFFHYye7t",
     },
   }),
+}
+
+export const sortFn: Options["sortFn"] = (a, b) => {
+  // if (a.data?.date && b.data?.date) {
+  //   return b.data?.date.getTime() - a.data?.date.getTime()
+  // }
+  if (a.data?.filePath && b.data?.filePath) {
+    return b.data?.filePath.localeCompare(a.data?.filePath)
+  }
+  return a.displayName.localeCompare(b.displayName)
 }
 
 // components for pages that display a single page (e.g. a single note)
@@ -38,12 +49,16 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.RecentNotes({
+      limit: 100100100,
+      showTags: false,
+    }),
+    // Component.Explorer(),
   ],
   right: [
-    Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
+    Component.Graph(),
   ],
 }
 
@@ -62,7 +77,11 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    // Component.Explorer({ sortFn }),
+    Component.RecentNotes({
+      limit: 100100100,
+      showTags: false,
+    }),
   ],
   right: [],
 }
