@@ -7,6 +7,7 @@ import { Date, getDate } from "./Date"
 import { GlobalConfiguration } from "../cfg"
 import { i18n } from "../i18n"
 import { classNames } from "../util/lang"
+import OverflowListFactory from "./OverflowList"
 // @ts-ignore
 import script from "./scripts/recent.inline"
 import { concatenateResources } from "../util/resources"
@@ -35,6 +36,7 @@ const defaultOptions = (cfg: GlobalConfiguration): Options => ({
 })
 
 export default ((userOpts?: Partial<Options>) => {
+  const { OverflowList, overflowListAfterDOMLoaded } = OverflowListFactory()
   const RecentNotes: QuartzComponent = ({
     allFiles,
     fileData,
@@ -45,7 +47,8 @@ export default ((userOpts?: Partial<Options>) => {
     const pages = allFiles.filter(opts.filter).sort(opts.sort)
     const remaining = Math.max(0, pages.length - opts.limit)
     return (
-      <div class={classNames(displayClass, "recent")}
+      <div
+        class={classNames(displayClass, "recent")}
         data-behavior={opts.folderClickBehavior}
         data-collapsed={opts.folderDefaultState}
         data-savestate={opts.useSavedState}
@@ -94,7 +97,7 @@ export default ((userOpts?: Partial<Options>) => {
           </svg>
         </button>
         <div class="recent-content" aria-expanded={false}>
-          <ul class="recent-ul">
+          <OverflowList class="recent-ul">
             {pages.slice(0, opts.limit).map((page) => {
               const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
               const tags = page.frontmatter?.tags ?? []
@@ -130,7 +133,7 @@ export default ((userOpts?: Partial<Options>) => {
                 </li>
               )
             })}
-          </ul>
+          </OverflowList>
         </div>
         {opts.linkToMore && remaining > 0 && (
           <p>
@@ -144,6 +147,6 @@ export default ((userOpts?: Partial<Options>) => {
   }
 
   RecentNotes.css = style
-  RecentNotes.afterDOMLoaded = concatenateResources(script)
+  RecentNotes.afterDOMLoaded = concatenateResources(script, overflowListAfterDOMLoaded)
   return RecentNotes
 }) satisfies QuartzComponentConstructor

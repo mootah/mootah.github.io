@@ -53,12 +53,12 @@ export const defaultContentPageLayout: PageLayout = {
       limit: 100100100,
       showTags: false,
     }),
-    // Component.Explorer(),
   ],
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
-    Component.Backlinks(),
-    Component.Graph(),
+    Component.TwohopLinks(),
+    // Component.Backlinks(),
+    // Component.Graph(),
   ],
 }
 

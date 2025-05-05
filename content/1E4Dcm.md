@@ -2,7 +2,7 @@
 aliases:
 - Quartz
 created: 2025-05-01
-modified: 2025-05-05T15:10
+modified: 2025-05-05T21:07
 tags:
 - Quartz
 - Obsidian
@@ -77,3 +77,7 @@ bun quartz sync
 ## Syncを定期実行する
 
 [[1E63xu|Quartzのデプロイを自動化する]]
+
+## 2-Hop-Linkを実装する
+
+[[1E6aDN|Quartzに2-Hop-Linkを実装する]]

@@ -79,6 +79,20 @@ figure[data-rehype-pretty-code-figure]>[data-rehype-pretty-code-title] + pre{
     border-radius: 0 0 5px 5px;
 }
 
+ul.toc-content.overflow>.depth-0>a {
+    opacity: .75;
+}
+
+ul.overflow.gradient-active, ol.overflow.gradient-active {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+ul.overflow>li.overflow-end, ol.overflow>li.overflow-end {
+    height: 2rem;
+    margin: 0;
+}
+
 .recent-notes {
     flex-direction: column;
     flex: 0 auto;

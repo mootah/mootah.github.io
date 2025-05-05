@@ -3,7 +3,8 @@
 HERE=`dirname $0`
 NOW=`date "+%Y-%m-%d %H:%M:%S"`
 
-$HERE/rename_with_uid -i "obsidian/box" \
+git pull \
+  && $HERE/rename_with_uid -i "obsidian/box" \
   && git add . \
   && git commit -m "Quartz sync: $NOW" \
   && git push
