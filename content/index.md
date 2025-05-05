@@ -12,6 +12,6 @@ title: Home
 
 ページが増えたらMOC的なの作ります
 
-メモはこれまでKeep + Scrapboxで運用していましたが
+メモはこれまでKeep + Scrapboxで運用していました
 Keepは日常の些事専用、Scrapboxはリンク集と化してしまっているので
 元々Scrapboxが担っていた情報の保存をObsidianに担当させようと思います

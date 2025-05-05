@@ -1,7 +1,7 @@
 ---
 aliases: null
 created: 2025-05-04
-modified: 2025-05-04T21:10
+modified: 2025-05-05T11:47
 tags:
 - Quartz
 - Obsidian
@@ -42,7 +42,7 @@ uid: 1E5Iwb
 そこで、Obsidian内ではあくまでH1をファイル名として扱い、
 Quartz側の実行スクリプトでUIDに置換する、ということをやる
 
-まず、frontmatterを以下のようにする
+### frontmatterの設定
 
 ```yaml title="frontmatter"
 uid: "<Templaterで生成>"
@@ -53,7 +53,7 @@ created: "<Templaterで生成>"
 modified: "<Update Time on Editで更新>"
 ```
 
-次に、Quartzプロジェクトを以下のようにする
+### Quartzプロジェクトのディレクトリ構成
 
 ```zsh title="tree"
 ./
@@ -63,127 +63,68 @@ modified: "<Update Time on Editで更新>"
 ...
 ```
 
-obsidianはvaultのことで、シンボリックリンクかサブモジュールにする
-content内は空にしておき、obsidianから前処理したページを移動してくる
+- obsidianはvaultのことで、シンボリックリンクかサブモジュールにする
+- content内は空にしておき、obsidianから前処理したページを移動してくる
+- scriptsディレクトリを用意する
 
-前処理するスクリプトを書く
+### 前処理するスクリプトを書く
+
+[scripts/rename_with_uid - GitHub](https://github.com/mootah/mootah.github.io/blob/main/scripts/rename_with_uid)
+
 - 全てのファイルのfrontmatterからuidをとってきてリネームする
 - 全てのファイルのwikiリンクをuidで更新する
     - `[[title]]`      -> `[[uid|title]]`
     - `[[title|alias]]` -> `[[uid|alias]]`
 
-
-```python title="scripts/preprocess"
-#!/usr/bin/env python3
-import os, re, shutil, datetime, traceback
-from pathlib import Path
-import frontmatter
-
-def read(ifile):
-  try:
-    with open(ifile, "r", encoding="utf-8") as f:
-      return frontmatter.load(f)
-  except Exception as e:
-    print(f"Error on reading {ifile}: {e}")
-    traceback.print_exc()
-    exit(1)
-
-def write(post, ofile):
-  try:
-    with open(ofile, "w", encoding="utf-8") as f:
-      f.write(frontmatter.dumps(post))
-  except Exception as e:
-    print(f"Error on writing {ofile}: {e}")
-    traceback.print_exc()
-    exit(1)
-
-def rename_with_uid(idir, odir):
-  mdfiles = list(Path(idir).rglob("*.md"))
-  
-  uids = {}
-  for md in mdfiles:
-    post = read(md)
-    uid = post.metadata.get("uid")
-    if md.stem == "Home":
-      uids[md.stem] = "index"
-    elif uid:
-      uids[md.stem] = uid
-    else:
-      uids[md.stem] = md.stem
-
-  for md in mdfiles:
-    post = read(md)
-    content = post.content
-    outpath = odir / f"{uids[md.stem]}.md"
-
-    # Update wiki links
-    for title, uid in uids.items():
-      # title -> uid|title
-      pattern1 = re.compile(
-        r"\[\[\s*"
-        + re.escape(title)
-        + r"\s*\]\]")
-      content = pattern1.sub(
-        f"[[{uid}|{title}]]", content)
-      
-      # title|alias -> uid|alias
-      pattern2 = re.compile(
-        r"\[\[\s*"
-        + re.escape(title)
-        + r"\s*\|\s*([^\]]+)\s*\]\]")
-      content = pattern2.sub(
-        f"[[{uid}|\\1]]", content)
-      
-      post.content = content
-      write(post, outpath)
-
-tmpdir = ""
-
-def make_backup(odir):
-  print("Creating backup...")
-  global tmpdir
-  now = int(datetime.datetime.now().timestamp())
-  tmpdir = Path(f"/tmp/quartz_backup_{now}")
-  os.makedirs(tmpdir, exist_ok=True)
-  for p in odir.glob("*"):
-    shutil.move(p, tmpdir)
-
-def clear_backup():
-  print("Clearing backup...")
-  shutil.rmtree(tmpdir)
-
-def rollback(odir):
-  print("Rollback processing...")
-  shutil.rmtree(odir)
-  os.makedirs(odir, exist_ok=True)
-  for p in tmpdir.glob("*"):
-    shutil.move(p, odir)
-
-if __name__ == "__main__":
-  pdir = Path(__file__).parent.parent
-  # input directory
-  idir = pdir / "obsidian" / "box"
-  # output directory
-  odir = pdir / "content"
-  
-  make_backup(odir)
-  try:
-    rename_with_uid(idir, odir)
-    print("Processing complete!")
-    clear_backup()
-  except:
-    rollback(odir)
-    traceback.print_exc()
-```
-
-実行権限を与える
+### 実行権限を与える
 
 ```zsh title="zsh"
-chmod +x scripts/preprocess
+chmod +x scripts/rename_with_uid
 ```
 
-ビルド前に叩けばOK
+### 使い方
 
 ```zsh title="zsh"
-scripts/preprocess && bun quartz build --serve
+scripts/rename_with_uid -h
+```
+
+```
+usage: rename_with_uid [-h] [-i I] [-o O] [--ignore IGNORE]
+
+Rename files with uid, then update wiki links
+
+options:
+  -h, --help       show this help message and exit
+  -i I             Obsidian vault (default: obsidian)
+  -o O             Quartz content (default: content)
+  --ignore IGNORE  Prefix to ignore (default: "_ .")
+```
+
+- `-i`
+    - 生成元のファイルがあるディレクトリ
+    - 指定した相対パス配下を全て処理する
+    - デフォルトは`./obsidian`
+- `-o`
+    - 生成先のディレクトリ
+    - 生成元のディレクトリ構成を受け継ぐ
+    - デフォルトは`./content`
+- `--ignore`
+    - 無視するディレクトリを前方一致で指定できるようにした
+    - スペース区切りで列挙できる
+    - デフォルトは`_`と`.`
+
+### syncコマンド一発でpushまで行う
+
+```bash title="scripts/sync"
+#!/usr/bin/env bash
+DIR=`dirname $0`
+$DIR/rename_with_uid && bun quartz sync
+```
+
+```zsh title="zsh"
+chmod +x scripts/sync
+```
+
+```zsh title="zsh"
+scripts/sync
 ```
