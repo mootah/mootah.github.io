@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
-DIR=`dirname $0`
-$DIR/rename_with_uid -i "obsidian/box" && bun quartz sync
+HERE=`dirname $0`
+NOW=`date "+%Y-%m-%d %H:%M:%S"`
+
+$HERE/rename_with_uid -i "obsidian/box" \
+  && git add . \
+  && git commit -m "Quartz sync: $NOW" \
+  && git push
 
