@@ -1,17 +1,21 @@
 ---
 aliases: null
 created: 2025-05-01
-modified: 2025-05-04T16:53
+modified: 2025-05-06T13:52
 tags: null
-title: Home
+title: + Home
+uid: index
 ---
 
-# Home
+# + Home
 
-[[1E4vtE|Obsidian]]はじめました
-
-ページが増えたらMOC的なの作ります
+Obsidianはじめました
 
 メモはこれまでKeep + Scrapboxで運用していました
 Keepは日常の些事専用、Scrapboxはリンク集と化してしまっているので
-元々Scrapboxが担っていた情報の保存をObsidianに担当させようと思います
+元々Scrapboxが担っていた情報管理をObsidianに移行します
+
+## Map of Contents
+
+- [[1E6phh|+ Obsidian]]
+- [[1E6pdS|+ Quartz]]

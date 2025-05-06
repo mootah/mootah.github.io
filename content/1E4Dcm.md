@@ -1,8 +1,7 @@
 ---
-aliases:
-- Quartz
+aliases: []
 created: 2025-05-01
-modified: 2025-05-05T21:07
+modified: 2025-05-06T13:44
 tags:
 - Quartz
 - Obsidian
@@ -13,10 +12,6 @@ uid: 1E4Dcm
 
 # Quartzのセットアップ
 
-## Quartz
-
-静的サイトジェネレータ
-[[1E4vtE|Obsidian]]をWeb公開できる
 
 [Welcome to Quartz 4](https://quartz.jzhao.xyz/)を読んでやってく
 
@@ -69,15 +64,3 @@ bun quartz sync
 
 `git push`までを実行する
 `content`がシンボリックリンクだった場合も実体に戻して`push`する
-
-## GitHubで公開する
-
-[[1E638F|QuartzをGitHubで公開する]]
-
-## Syncを定期実行する
-
-[[1E63xu|Quartzのデプロイを自動化する]]
-
-## 2-Hop-Linkを実装する
-
-[[1E6aDN|Quartzに2-Hop-Linkを実装する]]

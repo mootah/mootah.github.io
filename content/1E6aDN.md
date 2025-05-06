@@ -1,8 +1,9 @@
 ---
-aliases: []
+aliases: null
 created: 2025-05-05
-modified: 2025-05-06T13:10
-tags: []
+modified: 2025-05-06T17:07
+tags:
+- Quartz
 title: Quartzに2-Hop-Linkを実装する
 uid: 1E6aDN
 ---
@@ -66,10 +67,6 @@ flowchart LR
 ```
 
 [[1E6ne4|2-Hop-Linkのテスト1]]
-
-正しく動作している
-
-<img src="https://i.gyazo.com/4024ec5ad34e0b59c7773b5a04335c0b.png" alt="実際の表示" width="265"/>
 
 ## 実装
 
