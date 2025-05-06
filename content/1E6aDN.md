@@ -1,7 +1,7 @@
 ---
 aliases: null
 created: 2025-05-05
-modified: 2025-05-06T17:07
+modified: 2025-05-06T19:41
 tags:
 - Quartz
 title: Quartzに2-Hop-Linkを実装する
@@ -72,7 +72,7 @@ flowchart LR
 
 `quartz/components/Backlinks.tsx`をベースに実装した
 
-### データ加工
+### データの準備
 
 `Backlinks.tsx`を覗くと、`allFiles`から現在の`slug`を`links`に含むものをフィルタしている
 
