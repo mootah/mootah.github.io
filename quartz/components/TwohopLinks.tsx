@@ -48,12 +48,10 @@ export default ((opts?: Partial<TwohopLinksOptions>) => {
     uniqueLinks.add("/" as SimpleSlug)
     uniqueLinks.add(slug)
 
-    const backlinkMap = allFiles.reduce(
+    const backlinksMap = allFiles.reduce(
       (map, file) => {
         file.links?.forEach((link) => {
-          if (!map[link]) {
-            map[link] = []
-          }
+          if (!map[link]) map[link] = []
           map[link].push(file)
         })
         return map
@@ -61,17 +59,22 @@ export default ((opts?: Partial<TwohopLinksOptions>) => {
       {} as Record<SimpleSlug, Data[]>,
     )
 
-    const outLinkFiles = allFiles.filter((file) =>
-      fileData.links?.includes(simplifySlug(file.slug!)),
-    )
-    const allLinkFiles = outLinkFiles.concat(backlinkMap[slug] || []).filter((file) => {
+    const getBacklinks = (slug: SimpleSlug) => backlinksMap[slug] ?? []
+
+    const outlinkFiles = allFiles.filter((file) => {
       const s = simplifySlug(file.slug!)
-      if (uniqueLinks.has(s)) {
-        return false
-      }
+      if (!fileData.links?.includes(s)) return false
+      if (uniqueLinks.has(s)) return false
       uniqueLinks.add(s)
       return true
     })
+    const backlinkFiles = getBacklinks(slug).filter((file) => {
+      const s = simplifySlug(file.slug!)
+      if (uniqueLinks.has(s)) return false
+      uniqueLinks.add(s)
+      return true
+    })
+    const allLinkFiles = outlinkFiles.concat(backlinkFiles)
 
     if (options.hideWhenEmpty && allLinkFiles.length == 0) {
       return null
@@ -94,41 +97,35 @@ export default ((opts?: Partial<TwohopLinksOptions>) => {
           ) : (
             <li>{i18n(cfg.locale).components.backlinks.noBacklinksFound}</li>
           )}
-          {outLinkFiles.length > 0 &&
-            outLinkFiles.map((link) => {
-              const hops = (backlinkMap[simplifySlug(link.slug!)] || []).filter((file) => {
-                const s = simplifySlug(file.slug!)
-                if (uniqueLinks.has(s)) {
-                  return false
-                }
-                uniqueLinks.add(s)
-                return true
-              })
+          {outlinkFiles.map((file) => {
+            const os = simplifySlug(file.slug!)
+            const hops = getBacklinks(os).filter((hop) => {
+              const hs = simplifySlug(hop.slug!)
+              if (uniqueLinks.has(hs)) return false
+              uniqueLinks.add(hs)
+              return true
+            })
 
-              if (hops.length < 1) {
-                return null
-              }
+            if (hops.length < 1) return null
 
-              return (
-                <li>
-                  <h3>
-                    {linkicon()}
-                    {link.frontmatter?.title}
-                  </h3>
-                  <ul>
-                    {hops.map((hop) => {
-                      return (
-                        <li>
-                          <a href={resolveRelative(fileData.slug!, hop.slug!)} class="internal">
-                            {hop.frontmatter?.title}
-                          </a>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </li>
-              )
-            })}
+            return (
+              <li>
+                <h3>
+                  {linkicon()}
+                  {file.frontmatter?.title}
+                </h3>
+                <ul>
+                  {hops.map((hop) => (
+                    <li>
+                      <a href={resolveRelative(fileData.slug!, hop.slug!)} class="internal">
+                        {hop.frontmatter?.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )
+          })}
         </OverflowList>
       </div>
     )

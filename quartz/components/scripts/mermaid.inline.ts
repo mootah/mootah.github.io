@@ -255,4 +255,7 @@ document.addEventListener("nav", async () => {
       expandBtn.removeEventListener("click", showMermaid)
     })
   }
+
+  document.fonts.ready.then(renderMermaid)
+
 })

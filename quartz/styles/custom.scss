@@ -92,15 +92,3 @@ ul.overflow>li.overflow-end, ol.overflow>li.overflow-end {
     height: 2rem;
     margin: 0;
 }
-
-.recent-notes {
-    flex-direction: column;
-    flex: 0 auto;
-    min-height: 1.2rem;
-    display: flex;
-    overflow-y: hidden;
-}
-
-.recent-notes>ul.recent-ul {
-    overflow-y: scroll;
-}
