@@ -1,6 +1,7 @@
 import { Options } from "./quartz/components/Explorer"
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { SimpleSlug, simplifySlug } from "./quartz/util/path"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -52,6 +53,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.RecentNotes({
       limit: 100100100,
       showTags: false,
+      filter: (f) => simplifySlug(f.slug!) != ("/" as SimpleSlug)
     }),
   ],
   right: [
