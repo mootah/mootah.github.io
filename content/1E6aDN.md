@@ -1,7 +1,7 @@
 ---
 aliases: []
 created: 2025-05-05
-modified: 2025-05-06T12:58
+modified: 2025-05-06T13:10
 tags: []
 title: Quartzに2-Hop-Linkを実装する
 uid: 1E6aDN

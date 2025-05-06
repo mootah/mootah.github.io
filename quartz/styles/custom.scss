@@ -58,6 +58,10 @@ a.external {
     font-weight: inherit;
 }
 
+img {
+    border: 1px solid var(--lightgray);
+}
+
 .page>#quartz-body .page-header {
     margin-bottom: 1.9rem;
 }
