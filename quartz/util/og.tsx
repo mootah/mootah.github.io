@@ -76,10 +76,9 @@ export async function fetchTtf(
   rawFontName: string,
   weight: FontWeight,
 ): Promise<Buffer<ArrayBufferLike> | undefined> {
-
   const localFontData = await getLocalFontData(rawFontName, weight)
   if (localFontData) {
-    return localFontData;
+    return localFontData
   }
 
   const fontName = rawFontName.replaceAll(" ", "+")
@@ -243,6 +242,21 @@ export const defaultImage: SocialImageOptions["imageStructure"] = ({
             fontFamily: bodyFont,
           }}
         >
+          <span
+            style={{
+              color: cfg.theme.colors[colorScheme].darkgray,
+              fontWeight: 700,
+            }}
+          >
+            {cfg.pageTitle}
+          </span>
+          <span
+            style={{
+              padding: "0 1rem",
+            }}
+          >
+            {"-"}
+          </span>
           {cfg.baseUrl}
         </div>
       </div>
