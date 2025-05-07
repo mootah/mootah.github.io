@@ -30,10 +30,10 @@ async function setupRecent() {
       recentUl.scrollTop = parseInt(scrollTop)
     } else {
       // try to scroll to the active element if it exists
-      const activeElement = recentUl.querySelector(".active")
-      if (activeElement) {
-        activeElement.scrollIntoView({ behavior: "smooth" })
-      }
+      // const activeElement = recentUl.querySelector(".active")
+      // if (activeElement) {
+      //   activeElement.scrollIntoView({ behavior: "smooth" })
+      // }
     }
 
     // Set up event handlers

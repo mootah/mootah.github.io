@@ -122,9 +122,15 @@ button.desktop-recent {
 
     & > li {
       margin: 1rem 0;
+
       .section > .desc > a {
         background-color: transparent;
         color: var(--dark);
+
+        &.active {
+          opacity: 1;
+          color: var(--tertiary);
+        }
       }
 
       .section > .meta {

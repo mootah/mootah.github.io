@@ -18,11 +18,10 @@ export const sharedPageComponents: SharedLayout = {
 
 export const sortFn: Options["sortFn"] = (a, b) => {
   if (a.data?.date && b.data?.date) {
-    return b.data?.date.getTime() - a.data?.date.getTime()
-  } else if (a.data?.date && !b.data?.date) {
-    return -1
-  } else if (!a.data?.date && b.data?.date) {
-    return 1
+    const aDate = new Date(a.data?.date)
+    const bDate = new Date(b.data?.date)
+    const order = bDate.getTime() - aDate.getTime()
+    if (order != 0) return order
   }
   return a.displayName.localeCompare(b.displayName)
 }

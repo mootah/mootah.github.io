@@ -101,12 +101,14 @@ export default ((userOpts?: Partial<Options>) => {
             {pages.slice(0, opts.limit).map((page) => {
               const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
               const tags = page.frontmatter?.tags ?? []
+              const active = fileData.slug === page.slug ? "active" : "" 
 
               return (
                 <li class="recent-li">
                   <div class="section">
                     <div class="desc">
-                      <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
+                      <a href={resolveRelative(fileData.slug!, page.slug!)}
+                         class={classNames(displayClass, "internal", active)} >
                         {title}
                       </a>
                     </div>
