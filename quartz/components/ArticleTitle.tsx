@@ -1,11 +1,13 @@
+import { slug as slugAnchor } from "github-slugger"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
 
 const ArticleTitle: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
   const title = fileData.frontmatter?.title
   if (title) {
+    const anchor = slugAnchor(title)
     return (
-      <h1 class={classNames(displayClass, "article-title")} id={title.toLowerCase()}>
+      <h1 class={classNames(displayClass, "article-title")} id={anchor}>
         {title}
       </h1>
     )
