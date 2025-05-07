@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+HERE=`dirname $0`
+NOW=`date "+%Y-%m-%d %H:%M:%S"`
+
+$HERE/rename_with_uid -i "obsidian/box" \
+  && bun quartz build --serve
+

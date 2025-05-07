@@ -1,7 +1,7 @@
 ---
 aliases: null
 created: 2025-05-03
-modified: 2025-05-03
+modified: 2025-05-07T18:13
 tags:
 - 自キ
 - キーボード
