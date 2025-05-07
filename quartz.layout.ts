@@ -17,11 +17,12 @@ export const sharedPageComponents: SharedLayout = {
 }
 
 export const sortFn: Options["sortFn"] = (a, b) => {
-  // if (a.data?.date && b.data?.date) {
-  //   return b.data?.date.getTime() - a.data?.date.getTime()
-  // }
-  if (a.data?.filePath && b.data?.filePath) {
-    return b.data?.filePath.localeCompare(a.data?.filePath)
+  if (a.data?.date && b.data?.date) {
+    return b.data?.date.getTime() - a.data?.date.getTime()
+  } else if (a.data?.date && !b.data?.date) {
+    return -1
+  } else if (!a.data?.date && b.data?.date) {
+    return 1
   }
   return a.displayName.localeCompare(b.displayName)
 }
@@ -55,6 +56,7 @@ export const defaultContentPageLayout: PageLayout = {
       showTags: false,
       filter: (f) => simplifySlug(f.slug!) != ("/" as SimpleSlug)
     }),
+    // Component.Explorer({ sortFn }),
   ],
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
@@ -79,11 +81,11 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    // Component.Explorer({ sortFn }),
     Component.RecentNotes({
       limit: 100100100,
       showTags: false,
     }),
+    // Component.Explorer({ sortFn }),
   ],
   right: [],
 }
