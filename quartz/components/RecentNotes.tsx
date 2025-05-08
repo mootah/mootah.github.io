@@ -1,9 +1,8 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { FullSlug, SimpleSlug, resolveRelative } from "../util/path"
+import { SimpleSlug } from "../util/path"
 import { QuartzPluginData } from "../plugins/vfile"
 import { byDateAndAlphabetical } from "./PageList"
 import style from "./styles/recentNotes.scss"
-import { Date, getDate } from "./Date"
 import { GlobalConfiguration } from "../cfg"
 import { i18n } from "../i18n"
 import { classNames } from "../util/lang"
@@ -38,20 +37,21 @@ const defaultOptions = (cfg: GlobalConfiguration): Options => ({
 export default ((userOpts?: Partial<Options>) => {
   const { OverflowList, overflowListAfterDOMLoaded } = OverflowListFactory()
   const RecentNotes: QuartzComponent = ({
-    allFiles,
-    fileData,
+    // allFiles,
+    // fileData,
     displayClass,
     cfg,
   }: QuartzComponentProps) => {
     const opts = { ...defaultOptions(cfg), ...userOpts }
-    const pages = allFiles.filter(opts.filter).sort(opts.sort)
-    const remaining = Math.max(0, pages.length - opts.limit)
+    // const pages = allFiles.filter(opts.filter).sort(opts.sort)
+    // const remaining = Math.max(0, pages.length - opts.limit)
     return (
       <div
         class={classNames(displayClass, "recent")}
         data-behavior={opts.folderClickBehavior}
         data-collapsed={opts.folderDefaultState}
         data-savestate={opts.useSavedState}
+        data-locale={cfg.locale}
       >
         <button
           type="button"
@@ -96,54 +96,21 @@ export default ((userOpts?: Partial<Options>) => {
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
-        <div class="recent-content" aria-expanded={false}>
-          <OverflowList class="recent-ul">
-            {pages.slice(0, opts.limit).map((page) => {
-              const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
-              const tags = page.frontmatter?.tags ?? []
-              const active = fileData.slug === page.slug ? "active" : "" 
-
-              return (
-                <li class="recent-li">
-                  <div class="section">
-                    <div class="desc">
-                      <a href={resolveRelative(fileData.slug!, page.slug!)}
-                         class={classNames(displayClass, "internal", active)} >
-                        {title}
-                      </a>
-                    </div>
-                    {page.dates && (
-                      <p class="meta">
-                        <Date date={getDate(cfg, page)!} locale={cfg.locale} />
-                      </p>
-                    )}
-                    {opts.showTags && (
-                      <ul class="tags">
-                        {tags.map((tag) => (
-                          <li>
-                            <a
-                              class="internal tag-link"
-                              href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
-                            >
-                              {tag}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </li>
-              )
-            })}
-          </OverflowList>
+        <div class="recent-content" aria-expanded={true}>
+          <OverflowList class="recent-ul" />
+          <template id="recent-template">
+            <li class="recent-li">
+              <div class="section">
+                <div class="desc">
+                  <a href="#" class="internal"></a>
+                </div>
+                <p class="meta">
+                  <time></time>
+                </p>
+              </div>
+            </li>
+          </template>
         </div>
-        {opts.linkToMore && remaining > 0 && (
-          <p>
-            <a href={resolveRelative(fileData.slug!, opts.linkToMore)}>
-              {i18n(cfg.locale).components.recentNotes.seeRemainingMore({ remaining })}
-            </a>
-          </p>
-        )}
       </div>
     )
   }

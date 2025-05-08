@@ -117,7 +117,8 @@ button.desktop-recent {
   & ul {
     overscroll-behavior: contain;
     list-style: none;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
+    margin-top: 0;
     padding-left: 0;
 
     & > li {
