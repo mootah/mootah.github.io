@@ -14,7 +14,7 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: {
       provider: "google",
-      tagId: "G-X5MWQFNXN5"
+      tagId: "G-T3CJSQWF6C"
     },
     locale: "ja-JP",
     baseUrl: "mootah.github.io",

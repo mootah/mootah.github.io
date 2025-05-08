@@ -105,11 +105,6 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       };
       
       document.head.appendChild(gtagScript);
-
-      const gsvMeta = document.createElement('meta');
-      gsvMeta.name = 'google-site-verification';
-      gsvMeta.content = 'B9FWPqgBU4ks4mAk0G0UcUKGPuHy9eVD51O6EULNqu0';
-      document.head.appendChild(gsvMeta);
     `)
   } else if (cfg.analytics?.provider === "plausible") {
     const plausibleHost = cfg.analytics.host ?? "https://plausible.io"
