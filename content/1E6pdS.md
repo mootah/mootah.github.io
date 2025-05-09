@@ -1,7 +1,7 @@
 ---
 aliases: null
 created: 2025-05-06
-modified: 2025-05-06T16:57
+modified: 2025-05-09T18:08
 tags:
 - Quartz
 title: + Quartz
@@ -23,3 +23,4 @@ ObsidianプロジェクトをWeb公開できる
 - [[1E638F|QuartzをGitHubで公開する]]
 - [[1E63xu|Quartzのデプロイを自動化する]]
 - [[1E6aDN|Quartzに2-Hop-Linkを実装する]]
+- [[1E7rqa|Quartzのソートに手こずった]]

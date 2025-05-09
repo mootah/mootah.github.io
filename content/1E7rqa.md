@@ -1,7 +1,7 @@
 ---
 aliases: null
 created: 2025-05-08
-modified: 2025-05-09T18:06
+modified: 2025-05-09T18:09
 tags:
 - Quartz
 title: Quartzのソートに手こずった
@@ -74,7 +74,7 @@ const sortFn: Options["sortFn"]: (a, b) => {
 実は、`Explorer`は`contentIndex.json`を非同期に受け取って表示している
 その`json`が作られているところを見に行くと
 
-```ts title="contentIndex.tsx" {8}
+```ts title="contentIndex.tsx" {7}
 const simplifiedIndex = Object.fromEntries(
   Array.from(linkIndex).map(([slug, content]) => {
     // remove description and from content index as nothing downstream
