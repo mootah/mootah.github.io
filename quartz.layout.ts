@@ -1,7 +1,7 @@
-import { Options } from "./quartz/components/Explorer"
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import { SimpleSlug, simplifySlug } from "./quartz/util/path"
+// import { Options } from "./quartz/components/Explorer"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -16,15 +16,15 @@ export const sharedPageComponents: SharedLayout = {
   }),
 }
 
-export const sortFn: Options["sortFn"] = (a, b) => {
-  if (a.data?.date && b.data?.date) {
-    const aDate = new Date(a.data?.date)
-    const bDate = new Date(b.data?.date)
-    const order = bDate.getTime() - aDate.getTime()
-    if (order != 0) return order
-  }
-  return a.displayName.localeCompare(b.displayName)
-}
+// const sortFn: Options["sortFn"] = (a, b) => {
+//   if (a.data?.date && b.data?.date) {
+//     const aDate = new Date(a.data?.date)
+//     const bDate = new Date(b.data?.date)
+//     const order = bDate.getTime() - aDate.getTime()
+//     if (order != 0) return order
+//   }
+//   return a.displayName.localeCompare(b.displayName)
+// }
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
@@ -83,6 +83,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.RecentNotes({
       limit: 100100100,
       showTags: false,
+      filter: (f) => simplifySlug(f.slug!) != ("/" as SimpleSlug)
     }),
     // Component.Explorer({ sortFn }),
   ],
