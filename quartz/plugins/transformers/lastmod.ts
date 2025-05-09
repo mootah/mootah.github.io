@@ -13,7 +13,8 @@ const defaultOptions: Options = {
 }
 
 function coerceDate(fp: string, d: any): Date {
-  if (typeof d === "string" && d.includes(":")) {
+  // for JST
+  if (typeof d === "string" && d.includes(":") && !d.includes("+")) {
     d = d + "+09:00"
   }
   const dt = new Date(d)

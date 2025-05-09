@@ -1,7 +1,7 @@
 ---
 aliases: null
 created: 2025-05-08
-modified: 2025-05-09T18:59
+modified: 2025-05-09T19:46
 tags:
 - Quartz
 title: Quartzのソートに手こずった
@@ -70,7 +70,7 @@ const sortFn: Options["sortFn"] = (a, b) => {
 }
 ```
 
-`a`と`b`は`FileTrieNode<ContentDetails>`型である
+`a`と`b`は`FileTrieNode<ContentDetails>`型のオブジェクトである
 `ContentDetails`の定義を見てみると
 
 ```ts title="contentIndex.tsx" {9}
@@ -132,14 +132,14 @@ yield write({
 これをコメントアウトする
 
 今度こそ上手くいっただろうとビルドすると
-`date`に`getTime`なんてメソッドないですよって言われる
+`date`に`getTime`メソッドなんてないですよって言われる
 
 実は、jsonをパースする都合上`ContentDetails`の`date`は`Date`型にキャストされずに`string`型のままになっている
 
-ソート関数側で`Date`型を作ってやると上手くいった
+ソート関数側で`Date`オブジェクトを作ってやると上手くいった
 
 ## 余談
 
-このあと、フォルダ機能を使わないのと日付が見えててほしいという理由で`RecentNotes`をいじって使うことにした
+このあと、フォルダ機能を使わないのと日付を見せてほしいという理由で`RecentNotes`をいじって使うことにした
 その結果ほとんど`Explorer`と同じロジックを実装することになった
 今思えば`Explorer`の見た目を変えるほうがまだ修正コストが低かったかもしれない

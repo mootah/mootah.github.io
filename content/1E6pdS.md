@@ -1,7 +1,7 @@
 ---
 aliases: null
 created: 2025-05-06
-modified: 2025-05-09T18:08
+modified: 2025-05-09T19:51+09:00
 tags:
 - Quartz
 title: + Quartz

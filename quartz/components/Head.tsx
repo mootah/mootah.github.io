@@ -36,6 +36,13 @@ export default (() => {
     )
     const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
 
+    const ldJson = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: cfg.pageTitle,
+      url: `https://${cfg.baseUrl}/`,
+    }
+
     return (
       <head>
         <title>{title}</title>
@@ -86,6 +93,11 @@ export default (() => {
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
+        />
+
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js
           .filter((resource) => resource.loadTime === "beforeDOMReady")
@@ -97,7 +109,10 @@ export default (() => {
             return resource
           }
         })}
-        <meta name="google-site-verification" content="B9FWPqgBU4ks4mAk0G0UcUKGPuHy9eVD51O6EULNqu0" />
+        <meta
+          name="google-site-verification"
+          content="B9FWPqgBU4ks4mAk0G0UcUKGPuHy9eVD51O6EULNqu0"
+        />
       </head>
     )
   }
