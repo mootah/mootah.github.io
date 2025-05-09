@@ -1,7 +1,7 @@
 ---
 aliases: null
 created: 2025-05-08
-modified: 2025-05-09T18:09
+modified: 2025-05-09T18:59
 tags:
 - Quartz
 title: Quartzのソートに手こずった
@@ -13,6 +13,40 @@ uid: 1E7rqa
 QuartzにはデフォルトでExplorerというノートの一覧を左サイドに表示する機能がある
 
 この一覧を更新順にソートしたい
+
+## 結論
+
+`contentIndex.tsx`内の`date`を削除している行をコメントアウトする
+
+```diff title="contentIndex.tsx"
+- delete content.date
++ // delete content.date
+```
+
+`quartz.layout.ts`にソート関数を実装して`Explorer`に与える
+
+```ts title="quarts.layout.ts"
+import { Options } from "./quartz/components/Explorer"
+...
+const sortFn: Options["sortFn"] = (a, b) => {
+  if (a.data?.date && b.data?.date) {
+    const aDate = new Date(a.data?.date)
+    const bDate = new Date(b.data?.date)
+    const order = bDate.getTime() - aDate.getTime()
+    if (order != 0) return order
+  }
+  return a.displayName.localeCompare(b.displayName)
+}
+...
+export const defaultContentPageLayout: PageLayout = {
+  ...
+  left: [
+    ...
+    Component.Explorer({ sortFn }),
+  ],
+  ...
+}
+```
 
 ## 紆余曲折
 
@@ -103,40 +137,6 @@ yield write({
 実は、jsonをパースする都合上`ContentDetails`の`date`は`Date`型にキャストされずに`string`型のままになっている
 
 ソート関数側で`Date`型を作ってやると上手くいった
-
-## 結論
-
-`contentIndex.tsx`内の`date`を削除している行をコメントアウトする
-
-```diff title="contentIndex.tsx"
-- delete content.date
-+ // delete content.date
-```
-
-`quartz.layout.ts`にソート関数を実装して`Explorer`に与える
-
-```ts title="quarts.layout.ts"
-import { Options } from "./quartz/components/Explorer"
-...
-const sortFn: Options["sortFn"] = (a, b) => {
-  if (a.data?.date && b.data?.date) {
-    const aDate = new Date(a.data?.date)
-    const bDate = new Date(b.data?.date)
-    const order = bDate.getTime() - aDate.getTime()
-    if (order != 0) return order
-  }
-  return a.displayName.localeCompare(b.displayName)
-}
-...
-export const defaultContentPageLayout: PageLayout = {
-  ...
-  left: [
-    ...
-    Component.Explorer({ sortFn }),
-  ],
-  ...
-}
-```
 
 ## 余談
 
