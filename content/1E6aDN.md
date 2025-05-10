@@ -25,8 +25,8 @@ QuartzにScrapbox(現Cosense)のような2ホップリンクを実装する
 
 ## 使い方
 
-- [quartz/components/TwohopLinks.tsx](https://github.com/mootah/mootah.github.io/blob/main/quartz/components/TwohopLinks.tsx)
-- [quartz/components/styles/twohoplinks.scss](https://github.com/mootah/mootah.github.io/blob/main/quartz/components/styles/twohoplinks.scss)
+- [quartz/components/TwohopLinks.tsx - GitHub](https://github.com/mootah/mootah.github.io/blob/main/quartz/components/TwohopLinks.tsx)
+- [quartz/components/styles/twohoplinks.scss - GitHub](https://github.com/mootah/mootah.github.io/blob/main/quartz/components/styles/twohoplinks.scss)
 
 を所定の場所に配置して、`quartz/components/index.ts`に取り込む
 
