@@ -33,7 +33,7 @@ const config: QuartzConfig = {
       typography: {
         header: "LINE Seed JP",
         body: "LINE Seed JP",
-        code: "Juisee",
+        code: "JuliaMono",
       },
       colors: {
         lightMode: {

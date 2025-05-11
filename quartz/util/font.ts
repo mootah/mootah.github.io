@@ -13,9 +13,9 @@ const localFonts: FontDict = {
     400: "LINESeedJP_OTF_Rg.otf",
     700: "LINESeedJP_OTF_Bd.otf",
   },
-  "Juisee": {
-    400: "Juisee-Regular.ttf",
-    700: "Juisee-Bold.ttf",
+  "JuliaMono": {
+    400: "JuliaMono-Regular.ttf",
+    700: "JuliaMono-Bold.ttf",
   },
 }
 
