@@ -10,10 +10,7 @@ uid: index
 # saibox
 
 Obsidianはじめました
-
-メモはこれまでKeep + Scrapboxで運用していました
-Keepは日常の些事専用、Scrapboxはリンク集と化してしまっているので
-元々Scrapboxが担っていた情報管理をObsidianに移行します
+徐々にScrapbox(現Cosense)から移行していきます
 
 ## Map of Contents
 

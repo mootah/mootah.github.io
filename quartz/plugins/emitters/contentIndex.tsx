@@ -44,14 +44,16 @@ function generateSiteMap(cfg: GlobalConfiguration, idx: ContentIndexMap): string
   const createURLEntry = (slug: SimpleSlug, content: ContentDetails): string => `
   <url>
     <loc>https://${joinSegments(base, encodeURI(slug))}</loc>
-    ${content.date && `<lastmod>${content.date.toISOString().slice(0, 10)}</lastmod>`}
+    ${content.date && `<lastmod>${content.date.toISOString()}</lastmod>`}
   </url>`
   const urls = Array.from(idx)
     .map(([slug, content]) => createURLEntry(simplifySlug(slug), content))
     .join("")
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}
-</urlset>`
+  return `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}
+  </urlset>`
+  //   return `<?xml version="1.0" encoding="UTF-8"?>
+  // <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}
+  // </urlset>`
 }
 
 function generateRSSFeed(cfg: GlobalConfiguration, idx: ContentIndexMap, limit?: number): string {
