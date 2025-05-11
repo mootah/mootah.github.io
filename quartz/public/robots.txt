@@ -1,0 +1,3 @@
+User-agent: * 
+Allow: /
+Sitemap: https://mootah.github.io/sitemap.xml
