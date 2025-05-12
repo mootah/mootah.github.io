@@ -1,8 +1,7 @@
 ---
-aliases:
-- 大西配列
+aliases: null
 created: 2025-05-01
-modified: 2025-05-02
+modified: 2025-05-02 22:26:00
 tags:
 - キーボード
 title: 大西配列を改変する
