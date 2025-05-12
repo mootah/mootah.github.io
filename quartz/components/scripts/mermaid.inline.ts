@@ -257,5 +257,4 @@ document.addEventListener("nav", async () => {
   }
 
   document.fonts.ready.then(renderMermaid)
-
 })
