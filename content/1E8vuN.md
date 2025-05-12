@@ -1,8 +1,10 @@
 ---
-aliases: []
+aliases:
+- 言語学習
 created: 2025-05-12
-modified: null
-tags: []
+modified: 2025-05-12T23:01+09:00
+tags:
+- 言語学習
 title: + 言語学習
 uid: 1E8vuN
 ---
@@ -15,7 +17,7 @@ uid: 1E8vuN
 - [[1E8ttO|話者を固定したセンテンスマイニング]]
 - [[1E8u_a|filmotで単語の使用例を探す]]
 - [[1E8tUI|yt-dlpで字幕をダウンロードする]]
-- [[1E8tRj|字幕から頻度順の単語リストを得る]]
+- [[1E8tRj|字幕から頻度順の単語リストを作る]]
 
 ## 英語
 

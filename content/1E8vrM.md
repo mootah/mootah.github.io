@@ -1,5 +1,6 @@
 ---
-aliases: null
+aliases:
+- キーボード
 created: 2025-05-12
 modified: 2025-05-12T22:26+09:00
 tags:

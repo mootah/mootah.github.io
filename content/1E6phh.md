@@ -1,5 +1,6 @@
 ---
-aliases: null
+aliases:
+- Obsidian
 created: 2025-05-06
 modified: 2025-05-06T16:58
 tags:

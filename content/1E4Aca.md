@@ -1,6 +1,5 @@
 ---
-aliases:
-- Zsh
+aliases: []
 created: 2025-05-01
 modified: 2025-05-01
 tags:

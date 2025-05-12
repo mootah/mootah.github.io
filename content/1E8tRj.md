@@ -1,10 +1,10 @@
 ---
 aliases: null
 created: 2025-05-12
-modified: 2025-05-12T21:53+09:00
+modified: 2025-05-12T23:01+09:00
 tags:
 - 言語学習
-title: 字幕から頻度順の単語リストを得る
+title: 字幕から頻度順の単語リストを作る
 uid: 1E8tRj
 ---
 
@@ -42,8 +42,8 @@ import re, csv, collections, argparse
 from simplemma import is_known, lemmatize
 
 def read(ifile):
-    data = ""
     try:
+        data = ""
         with open(ifile) as f:
             data = f.read()
         return data
