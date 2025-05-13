@@ -14,5 +14,5 @@ uid: 1E6phh
 ローカルファーストのメモアプリ
 MarkdownとWikiリンクの恩恵にあずかることができる
 
-- [[1E5q2q|Obsidianの設定メモhoge]]
+- [[1E5q2q|Obsidianの設定メモ]]
 - [[1E5q66|Obsidianのファイル名にUIDを使う]]
