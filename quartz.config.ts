@@ -14,7 +14,7 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: {
       provider: "google",
-      tagId: "G-T3CJSQWF6C"
+      tagId: "G-T3CJSQWF6C",
     },
     locale: "ja-JP",
     baseUrl: "mootah.github.io",
@@ -56,7 +56,7 @@ const config: QuartzConfig = {
           light: "#161719",
           lightgray: "#393639",
           gray: "#646464",
-          darkgray: "#d4d4d4",
+          darkgray: "#bababa",
           dark: "#ebebeb",
           // secondary: "#ac93f7",
           // secondary: "#6fa1d7",
@@ -90,7 +90,7 @@ const config: QuartzConfig = {
       Plugin.CrawlLinks({
         markdownLinkResolution: "shortest",
         openLinksInNewTab: true,
-       }),
+      }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
       Plugin.HardLineBreaks(),
@@ -101,7 +101,7 @@ const config: QuartzConfig = {
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
       Plugin.FolderPage(),
-      Plugin.TagPage(),
+      // Plugin.TagPage(),
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,
@@ -112,9 +112,9 @@ const config: QuartzConfig = {
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
       // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages({
-        colorScheme: "darkMode",
-      }),
+      // Plugin.CustomOgImages({
+      //   colorScheme: "darkMode",
+      // }),
     ],
   },
 }

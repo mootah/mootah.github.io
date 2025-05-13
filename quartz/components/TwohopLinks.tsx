@@ -2,9 +2,11 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import style from "./styles/twohoplinks.scss"
 import { resolveRelative, SimpleSlug, simplifySlug } from "../util/path"
 import { i18n } from "../i18n"
-import { classNames } from "../util/lang"
-import OverflowListFactory from "./OverflowList"
 import { Data } from "vfile"
+import { classNames } from "../util/lang"
+
+// @ts-ignore
+import script from "./scripts/twohoplinks.inline"
 
 interface TwohopLinksOptions {
   hideWhenEmpty: boolean
@@ -32,9 +34,18 @@ const linkicon = () => (
   </i>
 )
 
+const sortFn = (a: Data, b: Data) => {
+  const aTitle = a.frontmatter?.title
+  const bTitle = b.frontmatter?.title
+  if (aTitle && bTitle) {
+    return aTitle.localeCompare(bTitle)
+  }
+  return 1
+}
+
 export default ((opts?: Partial<TwohopLinksOptions>) => {
   const options: TwohopLinksOptions = { ...defaultOptions, ...opts }
-  const { OverflowList, overflowListAfterDOMLoaded } = OverflowListFactory()
+  // const { OverflowList, overflowListAfterDOMLoaded } = OverflowListFactory()
 
   const TwohopLinks: QuartzComponent = ({
     fileData,
@@ -61,19 +72,23 @@ export default ((opts?: Partial<TwohopLinksOptions>) => {
 
     const getBacklinks = (slug: SimpleSlug) => backlinksMap[slug] ?? []
 
-    const outlinkFiles = allFiles.filter((file) => {
-      const s = simplifySlug(file.slug!)
-      if (!fileData.links?.includes(s)) return false
-      if (uniqueLinks.has(s)) return false
-      uniqueLinks.add(s)
-      return true
-    })
-    const backlinkFiles = getBacklinks(slug).filter((file) => {
-      const s = simplifySlug(file.slug!)
-      if (uniqueLinks.has(s)) return false
-      uniqueLinks.add(s)
-      return true
-    })
+    const outlinkFiles = allFiles
+      .filter((file) => {
+        const s = simplifySlug(file.slug!)
+        if (!fileData.links?.includes(s)) return false
+        if (uniqueLinks.has(s)) return false
+        uniqueLinks.add(s)
+        return true
+      })
+      .sort(sortFn)
+    const backlinkFiles = getBacklinks(slug)
+      .filter((file) => {
+        const s = simplifySlug(file.slug!)
+        if (uniqueLinks.has(s)) return false
+        uniqueLinks.add(s)
+        return true
+      })
+      .sort(sortFn)
     const allLinkFiles = outlinkFiles.concat(backlinkFiles)
 
     if (options.hideWhenEmpty && allLinkFiles.length == 0) {
@@ -81,35 +96,55 @@ export default ((opts?: Partial<TwohopLinksOptions>) => {
     }
     return (
       <div class={classNames(displayClass, "twohoplinks")}>
-        <h3>
-          {linkicon()}
-          {"Links"}
-        </h3>
-        <OverflowList>
-          {allLinkFiles.length > 0 ? (
-            allLinkFiles.map((file) => (
-              <li>
-                <a href={resolveRelative(fileData.slug!, file.slug!)} class="internal">
-                  {file.frontmatter?.title}
-                </a>
-              </li>
-            ))
-          ) : (
-            <li>{i18n(cfg.locale).components.backlinks.noBacklinksFound}</li>
-          )}
+        <button type="button" class="thl-header" aria-controls="thl-content" aria-expanded={false}>
+          <h3>
+            {linkicon()}
+            {"Links"}
+          </h3>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="fold"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="overflow thl-content">
+          <ul>
+            {allLinkFiles.length > 0 ? (
+              allLinkFiles.map((file) => (
+                <li>
+                  <a href={resolveRelative(fileData.slug!, file.slug!)} class="internal">
+                    {file.frontmatter?.title}
+                  </a>
+                </li>
+              ))
+            ) : (
+              <li>{i18n(cfg.locale).components.backlinks.noBacklinksFound}</li>
+            )}
+          </ul>
           {outlinkFiles.map((file) => {
             const os = simplifySlug(file.slug!)
-            const hops = getBacklinks(os).filter((hop) => {
-              const hs = simplifySlug(hop.slug!)
-              if (uniqueLinks.has(hs)) return false
-              uniqueLinks.add(hs)
-              return true
-            })
+            const hops = getBacklinks(os)
+              .filter((hop) => {
+                const hs = simplifySlug(hop.slug!)
+                if (uniqueLinks.has(hs)) return false
+                uniqueLinks.add(hs)
+                return true
+              })
+              .sort(sortFn)
 
             if (hops.length < 1) return null
 
             return (
-              <li>
+              <div>
                 <h3>
                   {linkicon()}
                   {file.frontmatter?.title}
@@ -123,16 +158,17 @@ export default ((opts?: Partial<TwohopLinksOptions>) => {
                     </li>
                   ))}
                 </ul>
-              </li>
+              </div>
             )
           })}
-        </OverflowList>
+          <div class="overflow-end"></div>
+        </div>
       </div>
     )
   }
 
   TwohopLinks.css = style
-  TwohopLinks.afterDOMLoaded = overflowListAfterDOMLoaded
+  TwohopLinks.afterDOMLoaded = script
 
   return TwohopLinks
 }) satisfies QuartzComponentConstructor

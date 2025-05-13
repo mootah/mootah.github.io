@@ -36,10 +36,10 @@ export default {
       title: "Explorer",
     },
     footer: {
-      createdWith: "Created with",
+      createdWith: "Powered by",
     },
     graph: {
-      title: "Graph View",
+      title: "Graph",
     },
     recentNotes: {
       title: "Recent Notes",
@@ -54,7 +54,7 @@ export default {
       searchBarPlaceholder: "Search for something",
     },
     tableOfContents: {
-      title: "Table of Contents",
+      title: "On This Page",
     },
     contentMeta: {
       readingTime: ({ minutes }) => `${minutes} min read`,

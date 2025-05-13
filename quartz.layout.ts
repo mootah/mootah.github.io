@@ -7,13 +7,14 @@ import { SimpleSlug, simplifySlug } from "./quartz/util/path"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
-  footer: Component.Footer({
-    links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
-    },
-  }),
+  afterBody: [Component.TwohopLinks()],
+  footer: Component.Footer(),
+  // footer: Component.Footer({
+  //   links: {
+  //     GitHub: "https://github.com/jackyzha0/quartz",
+  //     "Discord Community": "https://discord.gg/cRFFHYye7t",
+  //   },
+  // }),
 }
 
 // const sortFn: Options["sortFn"] = (a, b) => {
@@ -36,8 +37,9 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta({
       showReadingTime: false,
+      showComma: false,
     }),
-    Component.TagList(),
+    // Component.TagList(),
   ],
   left: [
     Component.PageTitle(),
@@ -53,18 +55,27 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.RecentNotes({
+      title: "Notes",
       limit: 100100100,
       showTags: false,
-      filter: (f) => simplifySlug(f.slug!) != ("/" as SimpleSlug)
+      filter: (f) => simplifySlug(f.slug!) != ("/" as SimpleSlug),
     }),
     // Component.Explorer({ sortFn }),
   ],
   right: [
+    Component.Graph({
+      localGraph: {
+        showTags: false,
+        depth: 2,
+        enableRadial: true,
+      },
+    }),
     Component.DesktopOnly(Component.TableOfContents()),
-    Component.TwohopLinks(),
     // Component.Backlinks(),
-    // Component.Graph(),
   ],
+  // afterBody: [
+  //   Component.TwohopLinks(),
+  // ],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
@@ -85,9 +96,10 @@ export const defaultListPageLayout: PageLayout = {
     Component.RecentNotes({
       limit: 100100100,
       showTags: false,
-      filter: (f) => simplifySlug(f.slug!) != ("/" as SimpleSlug)
+      filter: (f) => simplifySlug(f.slug!) != ("/" as SimpleSlug),
     }),
     // Component.Explorer({ sortFn }),
   ],
   right: [],
+  // afterBody: [],
 }

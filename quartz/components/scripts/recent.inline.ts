@@ -20,7 +20,11 @@ function toggleRecent(this: HTMLElement) {
   }
 }
 
-function createNode(currentSlug: FullSlug, locale: ValidLocale, entry: ContentDetails): HTMLLIElement {
+function createNode(
+  currentSlug: FullSlug,
+  locale: ValidLocale,
+  entry: ContentDetails,
+): HTMLLIElement {
   const template = document.getElementById("recent-template") as HTMLTemplateElement
   const clone = template.content.cloneNode(true) as DocumentFragment
   const li = clone.querySelector("li") as HTMLLIElement
@@ -65,12 +69,12 @@ async function setupRecent(currentSlug: FullSlug) {
 
     const fragment = document.createDocumentFragment()
     for (const [slug, entry] of entries) {
-      if (slug == "index" as FullSlug) continue
+      if (slug == ("index" as FullSlug)) continue
       const node = createNode(currentSlug, locale, entry)
       fragment.appendChild(node)
     }
     recentUl.insertBefore(fragment, recentUl.firstChild)
-    
+
     // restore recent scrollTop position if it exists
     const scrollTop = sessionStorage.getItem("recentScrollTop")
     if (scrollTop) {
@@ -85,7 +89,6 @@ async function setupRecent(currentSlug: FullSlug) {
       button.addEventListener("click", toggleRecent)
       window.addCleanup(() => button.removeEventListener("click", toggleRecent))
     }
-
   }
 }
 

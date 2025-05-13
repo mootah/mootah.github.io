@@ -101,7 +101,7 @@ button.desktop-recent {
   display: flex;
   align-items: center;
 
-  & h2 {
+  & h3 {
     font-size: 1rem;
     display: inline-block;
     margin: 0;
@@ -181,7 +181,7 @@ button.desktop-recent {
       height: 100dvh;
       max-height: 100dvh;
       visibility: hidden;
-      
+
       & > .recent-ul {
         overflow-y: scroll;
         height: calc(100dvh - 5rem);

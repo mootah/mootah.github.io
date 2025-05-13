@@ -1,6 +1,40 @@
 @use "../../styles/variables.scss" as *;
 
+button.thl-header {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+
+  & h3 {
+    font-size: 1rem;
+    display: inline-block;
+    margin: 0;
+  }
+
+  & .fold {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+  }
+
+  &.collapsed .fold {
+    transform: rotateZ(-90deg);
+  }
+}
+
+.thl-content {
+  &.collapsed {
+    display: none;
+  }
+}
+
 .twohoplinks {
+  display: flex;
   flex-direction: column;
 
   & h3 {
@@ -8,21 +42,40 @@
     margin: 0;
   }
 
+  & .overflow {
+    max-height: calc(100% - 1rem);
+    overflow-y: auto;
+    clear: both;
+    overscroll-behavior: contain;
+
+    & > .overflow-end {
+      height: 0.5rem;
+      margin: 0;
+    }
+  }
+
   & ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     list-style: none;
     padding: 0;
     margin: 0.5rem 0;
-    max-height: calc(100% - 2rem);
-    overscroll-behavior: contain;
 
     & > li {
       & > a {
         background-color: transparent;
+        display: block;
+        padding: 0.5rem;
+        border: 1px solid var(--gray);
+        margin: 0.4rem;
+        margin-left: 0;
+        color: var(--dark);
+        min-height: 3rem;
+        /* opacity: 0.75; */
       }
 
       & > h3 {
         margin-top: 0.5rem;
-        
       }
     }
   }
@@ -32,3 +85,18 @@
     vertical-align: middle;
   }
 }
+
+/* @media all and ($mobile) { */
+/* } */
+/**/
+/* @media all and (max-width: 1200px) { */
+/*   .twohoplinks { */
+/*     max-height: 100% !important; */
+/**/
+/*     & ul { */
+/*       display: grid; */
+/*       grid-template-columns: 1fr 1fr; */
+/*     } */
+/*   } */
+/* } */
+/**/

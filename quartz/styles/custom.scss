@@ -3,92 +3,107 @@
 // put your custom CSS here!
 
 @font-face {
-    font-family: "LINE Seed JP";
-    src: url("/static/fonts/LINESeedJP_OTF_Rg.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "LINE Seed JP";
+  src: url("/static/fonts/LINESeedJP_OTF_Rg.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "LINE Seed JP";
-    src: url("/static/fonts/LINESeedJP_OTF_Bd.woff2") format("woff2");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "LINE Seed JP";
+  src: url("/static/fonts/LINESeedJP_OTF_Bd.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "JuliaMono";
-    src: url("/static/fonts/JuliaMono-Regular.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "JuliaMono";
+  src: url("/static/fonts/JuliaMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "JuliaMono";
-    src: url("/static/fonts/JuliaMono-Bold.woff2") format("woff2");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "JuliaMono";
+  src: url("/static/fonts/JuliaMono-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 .page-title > a {
-    color: var(--dark);
+  color: var(--dark);
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 a.internal {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 a.internal.tag-link {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 a.external {
-    font-weight: inherit;
+  font-weight: inherit;
 }
 
 img {
-    border: 1px solid var(--lightgray);
+  border: 1px solid var(--lightgray);
 }
 
-.page>#quartz-body .page-header {
-    margin-bottom: 1.9rem;
+.page > #quartz-body .page-header {
+  margin-bottom: 1.9rem;
 }
 
-.page article>h1 {
-    display: none;
+.page article > h1 {
+  display: none;
 }
 
-figure[data-rehype-pretty-code-figure]>[data-rehype-pretty-code-title] {
-    width: auto;
-    margin-bottom: 0;
-    padding: .3rem 1rem;
-    border-radius: 5px 5px 0 0;
-    border-bottom: none;
+figure[data-rehype-pretty-code-figure] > [data-rehype-pretty-code-title] {
+  width: auto;
+  margin-bottom: 0;
+  padding: 0.3rem 1rem;
+  border-radius: 5px 5px 0 0;
+  border-bottom: none;
 }
 
-figure[data-rehype-pretty-code-figure]>[data-rehype-pretty-code-title] + pre{
-    margin-top: 0;
-    border-radius: 0 0 5px 5px;
+figure[data-rehype-pretty-code-figure] > [data-rehype-pretty-code-title] + pre {
+  margin-top: 0;
+  border-radius: 0 0 5px 5px;
 }
 
-ul.toc-content.overflow>.depth-0>a {
-    opacity: .75;
+/* ul.toc-content.overflow>.depth-0>a { */
+/*     opacity: .75; */
+/* } */
+
+ul.overflow.gradient-active,
+ol.overflow.gradient-active {
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
-ul.overflow.gradient-active, ol.overflow.gradient-active {
-    -webkit-mask-image: none;
-    mask-image: none;
+/* ul.overflow > li.overflow-end, */
+/* ol.overflow > li.overflow-end { */
+/*   height: 2rem; */
+/*   margin: 0; */
+/* } */
+
+.content-meta[show-comma="false"] > :not(:last-child) {
+  margin-right: 1rem;
 }
 
-ul.overflow>li.overflow-end, ol.overflow>li.overflow-end {
-    height: 2rem;
-    margin: 0;
+.sidebar,
+.page-footer {
+  font-size: 0.9rem;
+
+  & h3 {
+    font-size: 0.9rem !important;
+  }
 }

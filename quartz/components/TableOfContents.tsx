@@ -28,7 +28,7 @@ export default ((opts?: Partial<Options>) => {
     if (!fileData.toc) {
       return null
     }
-    fileData.collapseToc = true
+    // fileData.collapseToc = true
     return (
       <div class={classNames(displayClass, "toc")}>
         <button
