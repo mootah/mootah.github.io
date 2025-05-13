@@ -112,9 +112,9 @@ const config: QuartzConfig = {
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
       // Comment out CustomOgImages to speed up build time
-      // Plugin.CustomOgImages({
-      //   colorScheme: "darkMode",
-      // }),
+      Plugin.CustomOgImages({
+        colorScheme: "darkMode",
+      }),
     ],
   },
 }
