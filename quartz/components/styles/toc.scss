@@ -1,14 +1,14 @@
 @use "../../styles/variables.scss" as *;
 
 .toc {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   overflow-y: hidden;
   min-height: 1.4rem;
-  flex: 0 0.5 auto;
-  &:has(button.toc-header.collapsed) {
-    flex: 0 1 1.4rem;
-  }
+  /* flex: 0 0.5 auto; */
+  /* &:has(button.toc-header.collapsed) { */
+  /*   flex: 0 1 1.4rem; */
+  /* } */
 }
 
 button.toc-header {
@@ -62,5 +62,9 @@ ul.toc-content.overflow {
     & .depth-#{$i} {
       padding-left: calc(1rem * #{$i});
     }
+  }
+
+  &.collapsed {
+    display: none;
   }
 }
