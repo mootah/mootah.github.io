@@ -2,19 +2,18 @@
 aliases: []
 created: 2025-05-01
 modified: 2025-05-01
-tags:
-- Neovim
-- 環境構築
 title: Neovimのセットアップ
 uid: 1E4yRe
 ---
 
 # Neovimのセットアップ
 
+[[1E8FZz|環境構築]]
+
 ## Neovimのインストール
 
-WindowsのWSL(Ubuntu 22.04.5 LTS)上にインストールする
-aptのneovimは古いので最新版を[github](https://github.com/neovim/neovim/releases)から拾ってくる
+Windowsの[[1E8FUR|WSL]](Ubuntu 22.04.5 LTS)上にインストールする
+aptの[[1E8Gii|Neovim]]は古いので最新版を[github](https://github.com/neovim/neovim/releases)から拾ってくる
 
 zinitに管理させてるので詳細は[[1E4Aca|Zshのセットアップ]]を参照
 

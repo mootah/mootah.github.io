@@ -3,13 +3,11 @@ aliases:
 - Obsidian
 created: 2025-05-06
 modified: 2025-05-06T16:58
-tags:
-- Obsidian
-title: + Obsidian
+title: Obsidian
 uid: 1E6phh
 ---
 
-# + Obsidian
+# Obsidian
 
 [Obsidian - Sharpen your thinking](https://obsidian.md/)
 

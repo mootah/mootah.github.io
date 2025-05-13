@@ -2,7 +2,6 @@
 aliases: []
 created: 2025-05-12
 modified: 2025-05-12T21:58+09:00
-tags: []
 title: yt-dlpで字幕をダウンロードする
 uid: 1E8tUI
 ---

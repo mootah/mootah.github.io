@@ -3,13 +3,11 @@ aliases:
 - Quartz
 created: 2025-05-06
 modified: 2025-05-09T19:51+09:00
-tags:
-- Quartz
-title: + Quartz
+title: Quartz
 uid: 1E6pdS
 ---
 
-# + Quartz
+# Quartz
 
 [Welcome to Quartz 4](https://quartz.jzhao.xyz/)
 
@@ -20,7 +18,7 @@ ObsidianプロジェクトをWeb公開できる
 
 - [[1E4Dcm|Quartzのセットアップ]]
 - [[1E5Izk|Quartzでローカルフォントを使う]]
-- [[1E5Iwb|QuartzでのみUIDを使う]]
+- [[1E5Iwb|QuartzのURLをUIDにする]]
 - [[1E638F|QuartzをGitHubで公開する]]
 - [[1E63xu|Quartzのデプロイを自動化する]]
 - [[1E6aDN|Quartzに2-Hop-Linkを実装する]]

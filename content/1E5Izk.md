@@ -2,13 +2,13 @@
 aliases: null
 created: 2025-05-04
 modified: 2025-05-04 17:02:13
-tags:
-- Quartz
 title: Quartzでローカルフォントを使う
 uid: 1E5Izk
 ---
 
 # Quartzでローカルフォントを使う
+
+[[1E6pdS|Quartz]]
 
 [かえでさんの記事](https://obsidian.kaedesato.work/Box/Quartz%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95)を参考にした
 

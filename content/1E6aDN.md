@@ -1,16 +1,14 @@
 ---
 aliases: null
 created: 2025-05-05
-modified: 2025-05-06T19:41
-tags:
-- Quartz
+modified: 2025-05-13T11:52+09:00
 title: Quartzに2-Hop-Linkを実装する
 uid: 1E6aDN
 ---
 
 # Quartzに2-Hop-Linkを実装する
 
-QuartzにScrapbox(現Cosense)のような2ホップリンクを実装する
+[[1E6pdS|Quartz]]にScrapbox(現Cosense)のような2ホップリンクを実装する
 
 ## 仕様
 
@@ -26,6 +24,7 @@ QuartzにScrapbox(現Cosense)のような2ホップリンクを実装する
 ## 使い方
 
 - [quartz/components/TwohopLinks.tsx - GitHub](https://github.com/mootah/mootah.github.io/blob/main/quartz/components/TwohopLinks.tsx)
+- [quartz/components/scripts/twohoplinks.inline.ts - GitHub](https://github.com/mootah/mootah.github.io/blob/main/quartz/components/scripts/twohoplinks.inline.ts)
 - [quartz/components/styles/twohoplinks.scss - GitHub](https://github.com/mootah/mootah.github.io/blob/main/quartz/components/styles/twohoplinks.scss)
 
 を所定の場所に配置して、`quartz/components/index.ts`に取り込む
@@ -44,12 +43,13 @@ export {
 
 ```ts title="quartz/quartz.layout.ts"
 ...
-export const defaultContentPageLayout: PageLayout = {
+export const sharedPageComponents: SharedLayout = {
   ...
-  right: [
+  afterBody: [
     ...
     Component.TwohopLinks(),
   ],
+  ...
 }
 ```
 

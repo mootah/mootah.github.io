@@ -2,13 +2,13 @@
 aliases: null
 created: 2025-05-01
 modified: 2025-05-02 22:26:00
-tags:
-- キーボード
 title: 大西配列を改変する
 uid: 1E5mVA
 ---
 
 # 大西配列を改変する
+
+[[1E8vrM|キーボード]]
 
 ![大西改](https://gyazo.com/412496fc43301fdec5126ec743517038.png)
 

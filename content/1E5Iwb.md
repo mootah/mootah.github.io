@@ -2,14 +2,11 @@
 aliases: null
 created: 2025-05-04
 modified: 2025-05-05T14:28
-tags:
-- Quartz
-- Obsidian
-title: QuartzでのみUIDを使う
+title: QuartzのURLをUIDにする
 uid: 1E5Iwb
 ---
 
-# QuartzでのみUIDを使う
+# QuartzのURLをUIDにする
 
 ## 問題点
 
@@ -39,8 +36,8 @@ uid: 1E5Iwb
 
 ## 解決策
 
-そこで、Obsidian内ではあくまでH1をファイル名として扱い、
-Quartz側の実行スクリプトでUIDに置換する、ということをやる
+そこで、[[1E6phh|Obsidian]]内ではあくまでH1をファイル名として扱い、
+[[1E6pdS|Quartz]]側の実行スクリプトでUIDに置換する、ということをやる
 
 ### frontmatterの設定
 

@@ -2,16 +2,15 @@
 aliases: []
 created: 2025-05-01
 modified: 2025-05-06T13:44
-tags:
-- Quartz
-- Obsidian
-- 環境構築
 title: Quartzのセットアップ
 uid: 1E4Dcm
 ---
 
 # Quartzのセットアップ
 
+[[1E8FZz|環境構築]]
+
+[[1E6phh|Obsidian]]で書いたノートを[[1E6pdS|Quartz]]で公開する
 
 [Welcome to Quartz 4](https://quartz.jzhao.xyz/)を読んでやってく
 

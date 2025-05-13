@@ -2,17 +2,13 @@
 aliases: null
 created: 2025-05-07
 modified: 2025-05-07T19:26
-tags:
-- ZMK
-- 自キ
-- キーボード
 title: ZMKを読む（Keymap）
 uid: 1E6OhK
 ---
 
 # ZMKを読む（Keymap）
 
-ZMKのキーマップは`<name>.keymap`という[[1E6Ncr|Devicetreeファイル]]で定義する
+[[1E8FNl|ZMK]]のキーマップは`<name>.keymap`という[[1E6Ncr|Devicetreeファイル]]で定義する
 
 ## 用語
 

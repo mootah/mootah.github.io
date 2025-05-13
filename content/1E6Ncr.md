@@ -2,15 +2,13 @@
 aliases: null
 created: 2025-05-07
 modified: 2025-05-07T19:31
-tags:
-- ZMK
 title: Devicetreeファイル
 uid: 1E6Ncr
 ---
 
 # Devicetreeファイル
 
-ZMKにおいてハードウェア定義を記述するファイル
+[[1E8FNl|ZMK]]においてハードウェア定義を記述するファイル
 ビルド時に複数のファイルからノードツリーを構成する
 キーマップ定義にも使われる
 

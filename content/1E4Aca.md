@@ -2,16 +2,15 @@
 aliases: []
 created: 2025-05-01
 modified: 2025-05-01
-tags:
-- Zsh
-- 環境構築
 title: Zshのセットアップ
 uid: 1E4Aca
 ---
 
 # Zshのセットアップ
 
-UbuntuにZshいれる
+[[1E8FZz|環境構築]]
+
+Ubuntuに[[Zsh]]いれる
 
 ```bash title="bash"
 $ lsb_release -a

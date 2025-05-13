@@ -2,15 +2,13 @@
 aliases: null
 created: 2025-05-08
 modified: 2025-05-09T19:46
-tags:
-- Quartz
 title: Quartzのソートに手こずった
 uid: 1E7rqa
 ---
 
 # Quartzのソートに手こずった
 
-QuartzにはデフォルトでExplorerというノートの一覧を左サイドに表示する機能がある
+[[1E6pdS|Quartz]]にはデフォルトでExplorerというノートの一覧を左サイドに表示する機能がある
 
 この一覧を更新順にソートしたい
 
