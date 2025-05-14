@@ -41,13 +41,13 @@ uid: 1E5Iwb
 
 ### frontmatterの設定
 
+[[1E8Tk1|Templater]]で設定する
+
 ```yaml title="frontmatter"
-uid: "<Templaterで生成>"
-title: "<File Title Updaterで更新>"
-aliases: []
-tags: []
-created: "<Templaterで生成>"
-modified: "<Update Time on Editで更新>"
+uid: 
+title: 
+created: 
+modified: 
 ```
 
 ### Quartzプロジェクトのディレクトリ構成
