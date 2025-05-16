@@ -1,5 +1,4 @@
 ---
-aliases: null
 created: 2025-05-01
 modified: 2025-05-01
 title: Bunをインストールする

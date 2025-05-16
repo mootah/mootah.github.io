@@ -1,5 +1,4 @@
 ---
-aliases: []
 created: 2025-05-01
 modified: 2025-05-13T05:29+09:00
 title: saibox

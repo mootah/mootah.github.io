@@ -1,5 +1,4 @@
 ---
-aliases: []
 created: 2025-05-07
 modified: 2025-05-07
 title: ZMK

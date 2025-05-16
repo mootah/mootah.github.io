@@ -1,9 +1,7 @@
 ---
-aliases:
-- Quartz
 created: 2025-05-06
 modified: 2025-05-09T19:51+09:00
-title: Quartz
+title: Quartz - Quartz
 uid: 1E6pdS
 ---
 

@@ -1,9 +1,7 @@
 ---
-aliases:
-- 言語学習
 created: 2025-05-12
 modified: 2025-05-12T23:01+09:00
-title: 言語学習
+title: 言語学習 - 言語学習
 uid: 1E8vuN
 ---
 

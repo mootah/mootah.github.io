@@ -1,5 +1,4 @@
 ---
-aliases: null
 created: 2025-05-07
 modified: 2025-05-07T19:26
 title: ZMKを読む（Keymap）

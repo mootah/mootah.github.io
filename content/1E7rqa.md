@@ -1,5 +1,4 @@
 ---
-aliases: null
 created: 2025-05-08
 modified: 2025-05-09T19:46
 title: Quartzのソートに手こずった

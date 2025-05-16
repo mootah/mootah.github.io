@@ -1,5 +1,4 @@
 ---
-aliases: null
 created: 2025-05-04
 modified: 2025-05-04 17:02:13
 title: Quartzでローカルフォントを使う

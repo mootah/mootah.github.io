@@ -1,5 +1,4 @@
 ---
-aliases: null
 created: 2025-05-07
 modified: 2025-05-07T19:31
 title: Devicetreeファイル

@@ -1,6 +1,6 @@
 ---
 created: 2025-05-15T00:38+09:00
-modified: 2025-05-15T00:38+09:00
+modified: 2025-05-15T02:04+09:00
 title: OklabとOklch
 uid: 1E9bzT
 ---
@@ -24,7 +24,7 @@ HSVで明度を揃えても眩しさが揃わない問題を解消している
 - `c` : 彩度
 - `h` : 色相
 
-参考
+## 参考
 
 - [Oklab color space - Wikipedia](https://en.wikipedia.org/wiki/Oklab_color_space)
 - [A perceptual color space for image processing](https://bottosson.github.io/posts/oklab/)

@@ -1,5 +1,4 @@
 ---
-aliases: null
 created: 2025-05-12
 modified: 2025-05-12T22:01+09:00
 title: センテンスマイニング
