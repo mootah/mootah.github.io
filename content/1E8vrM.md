@@ -1,7 +1,9 @@
 ---
+aliases:
+- キーボード
 created: 2025-05-12
-modified: 2025-05-12T22:26+09:00
-title: キーボード - キーボード
+modified: 2025-05-17T03:10+09:00
+title: キーボード
 uid: 1E8vrM
 ---
 

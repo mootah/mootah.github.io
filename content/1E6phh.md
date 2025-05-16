@@ -1,7 +1,9 @@
 ---
+aliases:
+- Obsidian
 created: 2025-05-06
-modified: 2025-05-14T02:44+09:00
-title: Obsidian - Obsidian
+modified: 2025-05-17T03:09+09:00
+title: Obsidian
 uid: 1E6phh
 ---
 
