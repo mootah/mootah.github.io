@@ -1,6 +1,6 @@
 ---
 created: 2025-05-17T20:33+09:00
-modified: 2025-05-17T21:07+09:00
+modified: 2025-05-17T21:51+09:00
 title: 深さ優先探索（DFS）
 uid: 1Ea7gd
 ---
@@ -69,9 +69,9 @@ auto dfs = [&](auto self, int cv) -> void {
 
 ## 参考
 
-- [DFS (深さ優先探索) 超入門！ 〜 グラフ・アルゴリズムの世界への入口 〜【前編】 #AtCoder - Qiita](https://qiita.com/drken/items/4a7869c5e304883f539b)
+- [DFS (深さ優先探索) 超入門！ 〜 グラフ・アルゴリズムの世界への入口 〜【前編】 - Qiita](https://qiita.com/drken/items/4a7869c5e304883f539b)
 - [よくやる再帰関数の書き方 〜 n 重 for 文を機械的に 〜 - けんちょんの競プロ精進記録](https://drken1215.hatenablog.com/entry/2020/05/04/190252)
-- [グリッド問題でdfsのバックトラックは指数時間でO(4^HW)がかかってTLEします #AtCoder - Qiita](https://qiita.com/rMJ2pwyc4U/items/f26bfc9612259197bb09)
+- [グリッド問題でdfsのバックトラックは指数時間でO(4^HW)がかかってTLEします - Qiita](https://qiita.com/rMJ2pwyc4U/items/f26bfc9612259197bb09)
 
 ## 関連
 
