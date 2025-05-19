@@ -1,6 +1,6 @@
 ---
 created: 2025-05-17T20:33+09:00
-modified: 2025-05-17T21:51+09:00
+modified: 2025-05-19T06:38+09:00
 title: 深さ優先探索（DFS）
 uid: 1Ea7gd
 ---
@@ -40,8 +40,6 @@ auto dfs = [&](auto self, int cv) -> void {
 
 ```cpp title="dfs.cpp"
 auto dfs = [&](auto self, int cv, int pv) -> void {
-    seen[cv] = true;
-    
     each(nv, g[cv]) {
         if (nv == pv) continue;
         self(self, nv);
