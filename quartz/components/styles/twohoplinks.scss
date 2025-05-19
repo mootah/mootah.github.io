@@ -1,5 +1,13 @@
 @use "../../styles/variables.scss" as *;
 
+:root[reader-mode="on"] .twohoplinks {
+  opacity: 0;
+}
+
+:root[reader-mode="on"] .twohoplinks:hover {
+  opacity: 1;
+}
+
 button.thl-header {
   background-color: transparent;
   border: none;
