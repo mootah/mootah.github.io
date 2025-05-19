@@ -1,6 +1,7 @@
 @use "../../styles/variables.scss" as *;
 
 .search {
+  flex-grow: 1;
   min-width: fit-content;
   max-width: 14rem;
   @media all and ($mobile) {

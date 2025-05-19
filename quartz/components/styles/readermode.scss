@@ -19,9 +19,19 @@
     stroke: var(--darkgray);
     transition: opacity 0.1s ease;
   }
+  & .zen-off {
+    visibility: hidden;
+  }
 }
 
 :root[reader-mode="on"] {
+  & .zen-on {
+    visibility: hidden;
+  }
+  & .zen-off {
+    visibility: visible;
+  }
+
   & .sidebar.left,
   & .sidebar.right {
     opacity: 0;
