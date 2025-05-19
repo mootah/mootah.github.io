@@ -2,15 +2,27 @@
 import re, shutil, datetime, traceback, argparse
 from pathlib import Path
 import frontmatter
-tmpdir = None
+from tqdm import tqdm
+
+# for backup
+backup_dir = Path("/tmp")
+
+# [[title]] or [[title|alias]]
+WIKI_LINK_PATTERN = re.compile(r'\[\[([^\|\[\]]+)(?:\|([^\[\]]+))?\]\]')
+# ```...```
+CODE_BLOCK_PATTERN = re.compile(r'```.*?```', re.DOTALL)
+# `...`
+INLINE_CODE_PATTERN = re.compile(r'`[^`]+`')
+
 
 def read(ifile):
     try:
         with open(ifile, "r", encoding="utf-8") as f:
             return frontmatter.load(f)
     except Exception as e:
-        print(f"Error on reading {ifile}: {e}")
+        print(f"[ERROR] Failed to read {ifile}: {e}")
         exit(1)
+
 
 def write(post, ofile):
     try:
@@ -19,16 +31,51 @@ def write(post, ofile):
         with open(ofile, "w", encoding="utf-8") as f:
             f.write(frontmatter.dumps(post))
     except Exception as e:
-        print(f"Error on writing {ofile}: {e}")
+        print(f"[ERROR] Failed to write {ofile}: {e}")
         exit(1)
 
-def rename_with_uid(idir, odir, ignore):
-    mdfiles = list(idir.rglob("*.md"))
+
+def replace_wiki_links(content, uids):
+    code_blocks = {}
+    inline_codes = {}
+
+    def placeholder_store(pattern, store, prefix):
+        def replacer(match):
+            key = f"__{prefix}_{len(store)}__"
+            store[key] = match.group(0)
+            return key
+        return pattern.sub(replacer, content)
+
+    content = placeholder_store(CODE_BLOCK_PATTERN, code_blocks, "CODEBLOCK")
+    content = placeholder_store(INLINE_CODE_PATTERN, inline_codes, "INLINECODE")
+
+    def replacer(match):
+        title = match.group(1)
+        alias = match.group(2) or title
+        uid = uids.get(title)
+        if uid:
+            return f"[[{uid}|{alias}]]"
+        return match.group(0)
+
+    content = WIKI_LINK_PATTERN.sub(replacer, content)
+
+    for key, value in code_blocks.items():
+        content = content.replace(key, value)
+    for key, value in inline_codes.items():
+        content = content.replace(key, value)
+
+    return content
+
+
+def run(idir, odir, ignore):
+    print("[INFO] Loading all markdown files")
+    mds = list(idir.rglob("*.md"))
+    posts = [read(md) for md in tqdm(mds, ncols=80, leave=False)]
     uids = {}
     
-    # Collect uids from frontmatter
-    for md in mdfiles:
-        post = read(md)
+    print("[INFO] Collecting uids from frontmatter")
+    for i, md in tqdm(enumerate(mds), ncols=80, leave=False):
+        post = posts[i]
         uid = post.metadata.get("uid")
         if md.stem == "Home":
             uids[md.stem] = "index"
@@ -37,61 +84,54 @@ def rename_with_uid(idir, odir, ignore):
         else:
             uids[md.stem] = md.stem
 
-    # Update wiki links
-    for md in mdfiles:
+    print("[INFO] Updating wiki links")
+    for i, md in tqdm(enumerate(mds), ncols=80, leave=False):
+        post = posts[i]
         skip = any([p.stem.startswith(i)
-                    for i in ignore.split()
-                    for p in md.parents])
+                        for i in ignore.split()
+                            for p in md.parents])
         if skip: continue
 
         subdir = md.parent.relative_to(idir)
-        post = read(md)
-        content = post.content
         outpath = odir / subdir / f"{uids[md.stem]}.md"
 
-        for title, uid in uids.items():
-            # title -> uid|title
-            pattern1 = re.compile(
-                r"\[\[\s*" + re.escape(title) + r"\s*\]\]")
-            content = pattern1.sub(f"[[{uid}|{title}]]", content)
-            
-            # title|alias -> uid|alias
-            pattern2 = re.compile(
-                r"\[\[\s*" + re.escape(title) + r"\s*\|\s*([^\]]+)\s*\]\]")
-            content = pattern2.sub(f"[[{uid}|\\1]]", content)
-            
-            post.content = content
-            write(post, outpath)
+        post.content = replace_wiki_links(post.content, uids)
+        write(post, outpath)
+
 
 def make_backup(odir):
-    print("Creating backup...")
-    global tmpdir
+    print("[INFO] Creating backup...")
+    global backup_dir
     now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-    tmpdir = tmpdir / now
-    tmpdir.mkdir(parents=True, exist_ok=True)
+    backup_dir = backup_dir / now
+    backup_dir.mkdir(parents=True, exist_ok=True)
     for p in odir.glob("*"):
-        shutil.move(p, tmpdir)
+        shutil.move(p, backup_dir)
+
 
 def clear_backup():
-    print("Clearing backup...")
-    shutil.rmtree(tmpdir)
+    print("[INFO] Clearing backup...")
+    shutil.rmtree(backup_dir)
+
 
 def rollback(odir):
-    print("Rollback processing...")
+    print("[INFO] Rollback processing...")
     shutil.rmtree(odir)
-    tmpdir.mkdir(parents=True, exist_ok=True)
+    backup_dir.mkdir(parents=True, exist_ok=True)
     for p in tmpdir.glob("*"):
         shutil.move(p, odir)
 
-def run(idir, odir, ignore):
+
+def main(idir, odir, ignore):
     make_backup(odir)
     try:
-        rename_with_uid(idir, odir, ignore)
-        print("Processing complete!")
+        run(idir, odir, ignore)
+        print("[INFO] Processing complete!")
         clear_backup()
     except:
         rollback(odir)
         traceback.print_exc()
+
 
 if __name__ == "__main__":
     tmpdir = Path("/tmp/quartz_backups")
@@ -114,4 +154,6 @@ if __name__ == "__main__":
     odir = pdir / args.o
     ignore = args.ignore
 
-    run(idir, odir, ignore)
+    main(idir, odir, ignore)
+
+
