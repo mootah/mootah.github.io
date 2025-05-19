@@ -111,12 +111,16 @@ const config: QuartzConfig = {
       Plugin.RawFile(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages({
-        colorScheme: "darkMode",
-      }),
     ],
   },
+}
+
+if (!process.env.QUARTZ_LOCAL) {
+  config.plugins.emitters.push(
+    Plugin.CustomOgImages({
+      colorScheme: "darkMode",
+    }),
+  )
 }
 
 export default config
