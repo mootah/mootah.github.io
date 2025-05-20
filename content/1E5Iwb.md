@@ -1,6 +1,6 @@
 ---
 created: 2025-05-04
-modified: 2025-05-05T14:28
+modified: 2025-05-20T05:52+09:00
 title: QuartzのURLをUIDにする
 uid: 1E5Iwb
 ---
@@ -84,7 +84,7 @@ chmod +x scripts/rename_with_uid
 scripts/rename_with_uid -h
 ```
 
-```
+```stdout
 usage: rename_with_uid [-h] [-i I] [-o O] [--ignore IGNORE]
 
 Rename files with uid, then update wiki links
