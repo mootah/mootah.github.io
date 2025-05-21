@@ -1,6 +1,6 @@
 ---
 created: 2025-05-21T12:58+09:00
-modified: 2025-05-21T16:21+09:00
+modified: 2025-05-21T17:38+09:00
 title: ZMKのHold-Tap
 uid: 1EbkZL
 ---
@@ -14,7 +14,8 @@ uid: 1EbkZL
 
 ## Interrupt Flavors
 
-![zmk.dev/assets/images/comparison-90bcec61f679e88a74490eb261d92940.svg](https://zmk.dev/assets/images/comparison-90bcec61f679e88a74490eb261d92940.svg)
+![Gyazo](https://i.gyazo.com/6fb6674964ff3622be8f264adb386cf6.png)
+
 
 - Hold-preferred
     - `mod-tap`のデフォルト
