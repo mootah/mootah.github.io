@@ -1,13 +1,15 @@
 ---
 created: 2025-05-07
-modified: 2025-05-07T19:26
+modified: 2025-05-21T12:55+09:00
 title: ZMKを読む（Keymap）
 uid: 1E6OhK
 ---
 
 # ZMKを読む（Keymap）
 
-[[1E8FNl|ZMK]]のキーマップは`<name>.keymap`という[[1E6Ncr|Devicetreeファイル]]で定義する
+[Keymaps & Behaviors \| ZMK Firmware](https://zmk.dev/docs/keymaps)
+[[1E8FNl|ZMK]]のドキュメントを読む（パート3）
+ZMKのキーマップは`<name>.keymap`という[[1E6Ncr|Devicetreeファイル]]で定義する
 
 ## 用語
 

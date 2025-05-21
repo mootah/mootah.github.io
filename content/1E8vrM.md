@@ -2,7 +2,7 @@
 aliases:
 - キーボード
 created: 2025-05-12
-modified: 2025-05-17T03:10+09:00
+modified: 2025-05-21T17:14+09:00
 title: キーボード
 uid: 1E8vrM
 ---
@@ -26,3 +26,5 @@ uid: 1E8vrM
 - [[1E6OhK|ZMKを読む（Keymap）]]
 - [[1E6N1p|Kconfigファイル]]
 - [[1E6Ncr|Devicetreeファイル]]
+- [[1EbkZL|ZMKのHold-Tap]]
+- [[1EbobJ|ZMK Studioに対応する]]
