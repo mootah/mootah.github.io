@@ -16,7 +16,6 @@ uid: 1EbkZL
 
 ![Gyazo](https://i.gyazo.com/6fb6674964ff3622be8f264adb386cf6.png)
 
-
 - Hold-preferred
     - `mod-tap`のデフォルト
     - `tapping-term-ms`が経過するか、他のキーが押されると`hold`として振る舞う
